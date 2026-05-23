@@ -66,7 +66,15 @@
 
 | 文件 | 内容 | 关键词 |
 |------|------|--------|
-| utils/data.md | NBT/IData | 数据树, NBT 操作, JSON 转换 |
+| utils/nbt/idata.md | IData 类型与运算符 | IData 类型, DataString, DataInt, 类型转换, 运算符 |
+| utils/nbt/datamap.md | DataMap 与 DataList | 关联数组, Key 解析, 判空, 合并裁剪, DataList 遍历 |
+| utils/nbt/nbt-basics.md | NBT 标签与持久化 | NBT 构造, updateTag, withTag, PlayerPersisted, ForgeData |
+| utils/nbt/deep-update.md | 深度更新 | deepUpdate, DataUpdateOperation, OVERWRITE, APPEND, MERGE, REMOVE, DataUtil |
+| utils/nbt/item-nbt.md | 物品 NBT 操作 | item.tag, 物品 NBT 读写, 附魔检测, 工具函数 |
+| utils/nbt/player-nbt.md | 玩家 NBT 与 CD | player.data, 玩家 NBT, CD 机制, 世界时间 |
+| utils/nbt/display.md | 动态信息展示 | tooltip, addAdvancedTooltip, Lore 标签, 动态显示 |
+| utils/nbt/crafting-nbt.md | 配方 NBT 操作 | 配方函数, 事件函数, NBT 继承, 拒绝合成, JEI 提示 |
+| utils/network-handler.md | 服务端/客户端通信 | NetWorkHandler, IByteBuf, 发包, 收包, CD 同步 |
 | utils/arrays.md | 数组 | 数组操作, 切片, 遍历 |
 | utils/maps.md | Map | 关联数组, 键值遍历 |
 | utils/text.md | 文本 | 颜色, 样式, tooltip, 聊天文本 |
