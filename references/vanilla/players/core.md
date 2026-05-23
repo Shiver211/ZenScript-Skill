@@ -186,3 +186,33 @@ events.onPlayerCrafted(function(event as PlayerCraftedEvent) {
 // 需要用 update 覆盖
 event.player.update({PlayerPersisted: {custom: 10}});
 ```
+
+---
+
+## ContentTweaker 扩展（需安装 ContentTweaker）
+
+> `import mods.contenttweaker.Player;`
+
+CoT 回调函数中的玩家对象。
+
+### ICTPlayer（CoT 玩家）
+
+> `import mods.contenttweaker.Player;`
+
+继承 IPlayer 的所有方法。
+
+#### 方法
+
+| 方法 | 返回 | 说明 |
+|------|------|------|
+| `.getHeldItem(Hand)` | IMutableItemStack | 获取手持物品（返回可变版本） |
+
+```zenscript
+#loader contenttweaker
+import mods.contenttweaker.Player;
+import mods.contenttweaker.Hand;
+
+// 在回调中使用
+var mainHandItem = player.getHeldItem(Hand.main());
+mainHandItem.shrink(1);  // 减少数量
+```

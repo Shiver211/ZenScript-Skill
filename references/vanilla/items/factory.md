@@ -37,6 +37,18 @@ CoT 脚本第一行必须为 `#loader contenttweaker`。
 | `beaconPayment` | bool | false | 是否可作为信标消耗品 |
 | `toolClass` | string | null | 工具类型（"pickaxe"/"axe" 等） |
 | `toolLevel` | int | -1 | 工具挖掘等级 |
+| `itemRightClick` | IItemRightClick | null | 右键回调 |
+| `onItemUse` | IItemUse | null | 对方块使用回调 |
+| `onItemFoodEaten` | IItemFoodEaten | null | 吃下回调（仅 ItemFood） |
+| `onItemUpdate` | IItemUpdate | null | 物品更新回调 |
+| `onItemUseFinish` | IItemUseFinish | null | 使用完成回调 |
+| `onDestroyedBlock` | IItemDestroyedBlock | null | 破坏方块回调 |
+| `destroySpeed` | IItemDestroySpeed | null | 破坏速度函数 |
+| `itemInteractionForEntity` | IItemInteractionForEntity | null | 对实体交互回调 |
+| `containerItem` | IItemGetContainerItem | null | 容器物品函数 |
+| `itemColorSupplier` | IItemColorSupplier | null | 物品颜色函数 |
+| `localizedNameSupplier` | ILocalizedNameSupplier | null | 显示名函数 |
+| `textureLocation` | IResourceLocationSupplier | null | 纹理位置函数 |
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
@@ -72,6 +84,194 @@ soup.onItemFoodEaten = function(stack, world, player) {
     }
 };
 soup.register();
+```
+
+---
+
+## ContentTweaker 物品回调函数
+
+### IItemRightClick（右键点击）
+
+> `import mods.contenttweaker.IItemRightClick;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| itemStack | IMutableItemStack | 物品堆叠 |
+| world | IWorld | 世界 |
+| player | ICTPlayer | 玩家 |
+| hand | string | "MAIN_HAND" 或 "OFF_HAND" |
+
+返回 `"SUCCESS"`、`"PASS"` 或 `"FAIL"`。
+
+### IItemUse（对方块使用）
+
+> `import mods.contenttweaker.IItemUse;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| player | ICTPlayer | 玩家 |
+| world | IWorld | 世界 |
+| pos | IBlockPos | 方块位置 |
+| hand | Hand | 使用的手 |
+| facing | Facing | 方块面 |
+| blockHit | Position3f | 点击位置（0-1） |
+
+返回 ActionResult。
+
+```zenscript
+item.onItemUse = function(player, world, pos, hand, facing, blockHit) {
+    var firePos = pos.getOffset(facing, 1);
+    if (world.getBlockState(firePos).isReplaceable(world, firePos)) {
+        world.setBlockState(<block:minecraft:fire>, firePos);
+        player.getHeldItem(hand).damage(1, player);
+        return ActionResult.success();
+    }
+    return ActionResult.pass();
+};
+```
+
+### IItemFoodEaten（吃下食物）
+
+> `import mods.contenttweaker.IItemFoodEaten;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| mutableItemStack | IMutableItemStack | 食物堆叠 |
+| world | IWorld | 世界 |
+| player | ICTPlayer | 玩家 |
+
+返回 void。注意：如果设置了 `onItemUseFinish`，此回调不会触发。
+
+### IItemUpdate（物品更新）
+
+> `import mods.contenttweaker.IItemUpdate;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| itemStack | IMutableItemStack | 物品堆叠 |
+| world | IWorld | 世界 |
+| owner | IEntity | 持有者 |
+| slot | int | 物品栏槽位 |
+| isSelected | bool | 是否被选中 |
+
+返回 void。
+
+### IItemUseFinish（使用完成）
+
+> `import mods.contenttweaker.IItemUseFinish;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| itemStack | IMutableItemStack | 物品堆叠 |
+| world | IWorld | 世界 |
+| entity | IEntityLivingBase | 使用者 |
+
+返回 IItemStack（替换原物品）。
+
+### IItemDestroyedBlock（破坏方块）
+
+> `import mods.contenttweaker.IItemDestroyedBlock;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| stack | IMutableItemStack | 物品堆叠 |
+| world | IWorld | 世界 |
+| blockState | ICTBlockState | 方块状态 |
+| pos | IBlockPos | 方块位置 |
+| entity | IEntityLivingBase | 破坏者 |
+
+返回 bool（true=成功）。
+
+### IItemDestroySpeed（破坏速度）
+
+> `import mods.contenttweaker.IItemDestroySpeed;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| mutableItemStack | IMutableItemStack | 物品堆叠 |
+| blockState | ICTBlockState | 方块状态 |
+
+返回 float（破坏速度倍率）。
+
+### IItemInteractionForEntity（对实体交互）
+
+> `import mods.contenttweaker.IItemInteractionForEntity;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| itemStack | IMutableItemStack | 物品堆叠 |
+| player | ICTPlayer | 玩家 |
+| target | IEntityLivingBase | 目标实体 |
+| hand | string | "MAIN_HAND" 或 "OFF_HAND" |
+
+返回 bool。
+
+```zenscript
+item.itemInteractionForEntity = function(stack, player, target, hand) {
+    if (target.definition.id == "minecraft:sheep") {
+        target.removeFromWorld();
+        stack.shrink(1);
+        return true;
+    }
+    return false;
+};
+```
+
+### IItemGetContainerItem（容器物品）
+
+> `import mods.contenttweaker.IItemGetContainerItem;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| stack | IItemStack | 物品堆叠 |
+
+返回 IItemStack（合成后留下的物品，如桶→空桶），返回 null 表示不留。
+
+### ILocalizedNameSupplier（显示名函数）
+
+> `import mods.contenttweaker.LocalizedNameSupplier;`
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| itemStack | IItemStack | 物品堆叠 |
+
+返回 string（显示名称）。
+
+### IResourceLocationSupplier（纹理位置函数）
+
+> `import mods.contenttweaker.IResourceLocationSupplier;`
+
+无参数，返回 CTResourceLocation。
+
+---
+
+## ContentTweaker 物品类型
+
+### IMutableItemStack（可变物品堆叠）
+
+> `import mods.contenttweaker.MutableItemStack;`
+
+继承 IItemStack 和 IIngredient，可通过 ICTPlayer 获取。
+
+#### 方法
+
+| 方法 | 返回 | 说明 |
+|------|------|------|
+| `.setCount(int)` | void | 设置数量 |
+| `.grow(int)` | void | 增加数量 |
+| `.shrink(int)` | void | 减少数量 |
+| `.damage(int, ICTPlayer)` | void | 造成耐久损伤 |
+
+### ActionResult（动作结果）
+
+> `import mods.contenttweaker.ActionResult;`
+
+值：`fail`、`pass`、`success`
+
+```zenscript
+ActionResult.success()
+ActionResult.pass()
+ActionResult.fail()
 ```
 
 ---

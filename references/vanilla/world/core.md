@@ -207,3 +207,52 @@ IFacing 代表一个方向（北、南、东、西、上、下）。
 | 方法 | 返回 | 说明 |
 |------|------|------|
 | `.compare(IFacing)` | int | 比较两个方向，相等返回 0 |
+
+---
+
+## ContentTweaker 扩展（需安装 ContentTweaker）
+
+> `import mods.contenttweaker.World;`
+> `import mods.contenttweaker.Random;`
+
+CoT 脚本中使用的世界和随机数类型。
+
+### IWorld（CoT 世界）
+
+> `import mods.contenttweaker.World;`
+
+ContentTweaker 回调函数中的世界对象。
+
+#### @ZenGetter
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `remote` | bool | 是否为客户端 |
+| `raining` | bool | 是否下雨 |
+| `thundering` | bool | 是否雷暴 |
+| `moonPhase` | int | 当前月相 |
+| `dayTime` | bool | 是否白天 |
+| `time` | long | 世界时间 |
+| `dimension` | int | 维度 ID |
+| `surfaceWorld` | bool | 是否地表世界 |
+| `dimensionType` | string | 维度类型名称 |
+| `random` | CTRandom | 随机数生成器 |
+
+#### 方法
+
+| 方法 | 返回 | 说明 |
+|------|------|------|
+| `.getBiome(IBlockPos)` | IBiome | 获取生物群系 |
+| `.setBlockState(ICTBlockState, IBlockPos)` | bool | 设置方块状态 |
+| `.getBlockState(IBlockPos)` | ICTBlockState | 获取方块状态 |
+
+### 声音括号处理器
+
+| 括号 | 返回 | 说明 |
+|------|------|------|
+| `<soundevent:name>` | ISoundEventDefinition | 获取声音事件 |
+| `<soundtype:name>` | ISoundTypeDefinition | 获取声音类型 |
+
+**SoundEvent 格式**:
+- 原版: `<soundevent:ambient.cave>`
+- 模组: `<soundevent:modid:name>`

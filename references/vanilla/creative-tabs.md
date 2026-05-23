@@ -79,16 +79,41 @@ val tab = <minecraft:stone>.definition.creativeTab;
 
 CoT 脚本第一行必须为 `#loader contenttweaker`。
 
-### VanillaFactory 创造标签方法
-
-| 方法 | 返回 | 说明 |
-|------|------|------|
-| `.createCreativeTab(string id, IItemStack/Item/Block icon)` | CreativeTab | 创建自定义创造标签 |
-
 ### CreativeTab（自定义创造标签）
 
-> `import mods.contenttweaker.CreativeTab;`
+#### @ZenGetter / @ZenSetter
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `unlocalizedName` | string | 标签页名称（创建时设置） |
+| `iconStack` | IItemStack | 图标物品 |
+| `iconStackSupplier` | IItemStackSupplier | 图标供应函数 |
+
+#### 方法
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.register()` | void | 注册创造标签 |
+| `.createCreativeTab(string, IItemStack)` | CreativeTab | 用物品堆叠作为图标 |
+| `.createCreativeTab(string, ItemRepresentation)` | CreativeTab | 用 CoT 物品作为图标 |
+| `.createCreativeTab(string, BlockRepresentation)` | CreativeTab | 用 CoT 方块作为图标 |
+| `.createCreativeTab(string, IItemStackSupplier)` | CreativeTab | 用函数动态提供图标 |
+| `.register()` | void | 注册创造标签（注册后不可修改） |
+
+### ContentTweaker 创造标签示例
+
+```zenscript
+#loader contenttweaker
+import mods.contenttweaker.VanillaFactory;
+import mods.contenttweaker.CreativeTab;
+
+var tab = VanillaFactory.createCreativeTab("my_tab", <item:minecraft:diamond>);
+tab.register();
+```
+
+### Creative Tab 括号处理器
+
+通过 `<creativetab:name>` 获取已有的创造标签。
+
+```zenscript
+val miscTab = <creativetab:misc>;
+```

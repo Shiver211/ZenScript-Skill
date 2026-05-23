@@ -27,7 +27,7 @@
 ### 通用步骤
 
 1. 根据你的 agent，将 `skills/<agent>/` 内的文件复制到对应位置
-2. 将`refereces` 复制到 `.md` 同级目录
+2. 将`references` 复制到 `.md` 同级目录
 
 ### Codex
 

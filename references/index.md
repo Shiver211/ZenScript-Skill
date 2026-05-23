@@ -50,13 +50,13 @@
 | vanilla/events/block.md | 方块事件 | 方块破坏, 方块放置 |
 | vanilla/events/overview.md | 事件概述 | 事件接口, 事件监听, 事件列表 |
 | vanilla/ore-dictionary.md | 矿物词典 | IOreDictEntry, 矿辞操作 |
-| vanilla/enchantments.md | 附魔 | IEnchantmentDefinition, 附魔操作 |
+| vanilla/enchantments.md | 附魔 | IEnchantmentDefinition, EnchantmentBuilder, 自定义附魔 |
 | vanilla/potions.md | 药水 | IPotion, IPotionEffect, 药水效果 |
 | vanilla/container.md | 容器 | IContainer, 容器操作 |
 | vanilla/biomes.md | 生物群系 | IBiome, 生物群系操作 |
 | vanilla/dispenser.md | 发射器 | 发射器配方 |
 | vanilla/tile-entity.md | 方块实体 | ITileEntity, 方块实体操作 |
-| vanilla/creative-tabs.md | 创造标签页 | ICreativeTab, 创造模式标签 |
+| vanilla/creative-tabs.md | 创造标签页 | ICreativeTab, CreativeTab, 自定义创造标签 |
 | vanilla/villager.md | 村民 | 村民交易 |
 | vanilla/village.md | 村庄 | 村庄声望, IVillage, 村庄半径, 村庄门 |
 | vanilla/gamerules.md | 游戏规则 | 游戏规则操作 |
@@ -86,3 +86,4 @@
 | utils/i18n.md | 本地化 | 翻译键, 多语言 |
 | utils/GlStateManager.md | 渲染状态 | 客户端渲染, 矩阵, 颜色 |
 | utils/mixin.md | Mixin | ZenScript Mixin |
+| utils/color.md | 颜色对象 | Color, ContentTweaker, 颜色函数 |

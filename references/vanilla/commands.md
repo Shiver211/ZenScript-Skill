@@ -200,3 +200,35 @@ cmd.execute = function(command, server, sender, args) {
 cmd.tabCompletionGetters = [IGetTabCompletion.player()];
 cmd.register();
 ```
+
+---
+
+## ContentTweaker 扩展（需安装 ContentTweaker）
+
+用于在 CoT 脚本中执行命令。
+
+### Commands（命令执行）
+
+> `import mods.contenttweaker.Commands;`
+
+#### 方法
+
+| 方法 | 返回 | 说明 |
+|------|------|------|
+| `.call(string, IPlayer, IWorld)` | void | 执行命令（logToChat=true, overridePermissions=true） |
+| `.call(string, IPlayer, IWorld, bool, bool)` | void | 执行命令 |
+
+**参数说明**:
+- `command`: 要执行的命令
+- `player`: 执行命令的玩家
+- `world`: 命令执行的世界
+- `logToChat`: 是否将命令输出显示在聊天
+- `overridePermissions`: 是否忽略权限要求
+
+```zenscript
+#loader contenttweaker
+import mods.contenttweaker.Commands;
+
+// 在回调中执行命令
+Commands.call("give @p minecraft:diamond 1", player, world);
+```
