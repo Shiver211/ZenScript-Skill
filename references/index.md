@@ -95,3 +95,4 @@
 | utils/GlStateManager.md | 渲染状态 | 客户端渲染, 矩阵, 颜色 |
 | utils/mixin.md | Mixin | ZenScript Mixin |
 | utils/color.md | 颜色对象 | Color, ContentTweaker, 颜色函数 |
+| utils/expand.md | 扩展方法 | $expand, this, 自定义成员方法, 扩展类 |

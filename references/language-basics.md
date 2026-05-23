@@ -228,23 +228,3 @@ static myStaticValue as IItemStack = <minecraft:sand>;
 import mods.jei.JEI;                    // 导入包
 import mods.jei.JEI.hide as h;          // 别名导入
 ```
-
----
-
-## 扩展方法
-
-可为已有类添加新方法。使用 `$expand` 语法，`this` 指向被扩展的实例。
-
-```zenscript
-$expand IItemStack$show() as void {
-    print(this.commandString);
-}
-
-$expand string$wrap(prefix as string = "(", suffix as string = ")") as string {
-    return prefix ~ this ~ suffix;
-}
-
-<minecraft:apple>.show();
-print("test".wrap());        // "(test)"
-print("test".wrap("[", "]")); // "[test]"
-```
