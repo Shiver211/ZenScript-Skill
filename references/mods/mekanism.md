@@ -3,6 +3,7 @@
 > Mod ID: `mekanism`
 > 前置条件: 无
 > 导入: `import mods.mekanism.<ClassName>;`
+> 注意： 该文档为原版mekanism参考。不是社区非官方版，请一定询问用户的具体版本！
 
 ## 气体系统
 
