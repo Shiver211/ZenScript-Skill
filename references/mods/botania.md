@@ -385,3 +385,108 @@ TileDataObj.data = {"test" : "testValue" as string};
 TileDataObj.data = {"testTwo" : {"testThree" : "testValue"}};
 print(TileDataObj.data.asString());
 ```
+
+---
+
+## BotaniaTweaks 扩展（需安装 BotaniaTweaks）
+
+BotaniaTweaks 替换了聚合板的方块和 TileEntity，支持通过 ZenScript 自定义聚合配方。可调整配方的输入、输出、魔力消耗，自定义聚合板下方多方块结构，以及配方完成后多方块结构的替换/消耗。
+
+### Agglomeration（凝聚板配方）
+
+> `import mods.botaniatweaks.Agglomeration;`
+
+#### 方法方式
+
+| 方法 | 返回 | 说明 |
+|------|------|------|
+| `.addRecipe(IItemStack output, IIngredient[] inputs, @Optional int manaCost, @Optional int color1, @Optional int color2, @Optional IIngredient center, @Optional IIngredient edge, @Optional IIngredient corner, @Optional IIngredient centerReplace, @Optional IIngredient edgeReplace, @Optional IIngredient cornerReplace)` | void | 添加凝聚配方。output/inputs 必填，其余可选 |
+| `.removeRecipe(...)` | void | 移除配方，参数同 addRecipe |
+| `.removeDefaultRecipe()` | void | 移除默认泰拉钢凝聚配方（无参数） |
+
+**参数说明：**
+
+| 参数 | 默认值 | 类型 | 说明 |
+|------|--------|------|------|
+| `output` | *(必填)* | IItemStack | 配方输出 |
+| `inputs` | *(必填)* | IIngredient[] | 配方输入（放在凝聚板上的物品） |
+| `manaCost` | 500000 | int | 魔力消耗（默认值等价于泰拉钢） |
+| `color1` | 0x0000FF | int | 配方开始时粒子颜色（0xRRGGBB） |
+| `color2` | 0x00FF00 | int | 配方结束时粒子颜色（0xRRGGBB） |
+| `center` | `<botania:livingrock>` | IIngredient | 凝聚板正下方的方块 |
+| `edge` | `<minecraft:lapis_block>` | IIngredient | 凝聚板四边下方的方块 |
+| `corner` | `<botania:livingrock>` | IIngredient | 凝聚板四角下方的方块 |
+| `centerReplace` | null | IIngredient | 配方完成后替换中心方块。null 则不替换 |
+| `edgeReplace` | null | IIngredient | 配方完成后替换四边方块 |
+| `cornerReplace` | null | IIngredient | 配方完成后替换四角方块 |
+
+**注意：** 若指定 `center`，则必须同时指定 `edge` 和 `corner`（即必须定义完整的多方块结构，或全部使用默认值）。
+
+### AgglomerationRecipe（凝聚配方对象）
+
+> `import mods.botaniatweaks.AgglomerationRecipe;`
+
+用于组织复杂配方的辅助类。构造方式：`AgglomerationRecipe.create()`
+
+#### @ZenSetter（字段）
+
+| 字段 | 默认值 | 类型 | 说明 |
+|------|--------|------|------|
+| `output` | null | IItemStack | 配方输出 |
+| `inputs` | null | IIngredient[] | 配方输入 |
+| `manaCost` | 500000 | int | 魔力消耗 |
+| `color1` | 0x0000FF | int | 开始粒子颜色 |
+| `color2` | 0x00FF00 | int | 结束粒子颜色 |
+| `multiblock` | 默认多方块 | AgglomerationMultiblock | 该配方的多方块结构 |
+
+#### 方法（链式设置器）
+
+所有 setter 方法均返回 `AgglomerationRecipe`，支持链式调用：`AgglomerationRecipe.create().output(<minecraft:stone>).inputs(...)`
+
+### AgglomerationMultiblock（凝聚多方块结构）
+
+> `import mods.botaniatweaks.AgglomerationMultiblock;`
+
+构造方式：`AgglomerationMultiblock.create()`
+
+#### @ZenSetter（字段）
+
+| 字段 | 默认值 | 类型 | 说明 |
+|------|--------|------|------|
+| `center` | `<botania:livingrock>` | IIngredient | 凝聚板正下方的方块 |
+| `edge` | `<minecraft:lapis_block>` | IIngredient | 四边下方的方块 |
+| `corner` | `<botania:livingrock>` | IIngredient | 四角下方的方块 |
+| `centerReplace` | null | IIngredient | 配方完成后替换中心方块 |
+| `edgeReplace` | null | IIngredient | 配方完成后替换四边方块 |
+| `cornerReplace` | null | IIngredient | 配方完成后替换四角方块 |
+
+#### 快捷方法（链式）
+
+| 方法 | 签名 | 说明 |
+|------|------|------|
+| `all` | `(IIngredient all)` | 将多方块结构的 9 个方块全部设为同一方块 |
+| `checker` | `(IIngredient five, IIngredient four)` | 棋盘格布局。five 为中心+四角，four 为四边。例：`checker(<botania:livingrock>, <minecraft:lapis_block>)` |
+| `allReplace` | `(IIngredient allReplace)` | 同 `all`，但设置替换方块 |
+| `checkerReplace` | `(IIngredient fiveReplace, IIngredient fourReplace)` | 同 `checker`，但设置替换方块 |
+| `consumeCenter` | `()` | 配方完成后消耗中心方块（等价于 `centerReplace(<minecraft:air>)`） |
+| `consumeEdge` | `()` | 配方完成后消耗四边方块 |
+| `consumeCorner` | `()` | 配方完成后消耗四角方块 |
+
+### AgglomerationPage（凝聚辞典页面）
+
+> `import mods.botaniatweaks.AgglomerationPage;`
+
+为自定义凝聚配方在植物魔法辞典中添加页面。
+
+| 方法 | 返回 | 说明 |
+|------|------|------|
+| `.add(String unlocalizedName, String entry, int pageNumber, AgglomerationRecipe recipe)` | void | 添加聚合辞典页面 |
+| `.add(String unlocalizedName, String entry, int pageNumber, IItemStack output, IIngredient[] inputs, ...)` | void | 同上，直接传入配方参数（与 Agglomeration.addRecipe 参数相同） |
+
+**参数说明：**
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `unlocalizedName` | String | 未本地化名称，会被翻译并显示在配方下方 |
+| `entry` | String | 植物魔法辞典条目的未本地化名称 |
+| `pageNumber` | int | 该页面前面一页的页码 |
