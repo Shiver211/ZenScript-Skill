@@ -4,7 +4,7 @@
 
 ## 输出要求
 
-生成一个 Markdown 文件，严格遵循以下结构：
+只整理ZenScript相关内容，生成一个 Markdown 文件，严格遵循以下结构：
 
 ```markdown
 # [模组名称] CraftTweaker API 参考
