@@ -94,7 +94,8 @@ import mods.<modid>.<ClassName>;
 10. **如果用户提供的资料中对方法中的参数有定义或解释，请添加到方法说明中，如果没有，直接不写**
 11. **对于属性，如果只读，分到@ZenGetter，如果可读写，分到@ZenGetter / @ZenSetter** 严格执行属性分类，不要把只读属性放到@ZenGetter/@ZenSetter中，也不要把可读写属性放到@ZenGetter中。
 12. **使用示例，常见错误和注意事项必须来自用户提供的资料，如果没有，那么就不写，绝对不能自己编造**
-13. **在vanilla或utils内创建新文件后请更新 `references\index.md` 索引文件**
+13. **修改vanilla或utils的文件后请更新 `references\index.md` 索引文件** 修改mods后不需要更新。
+14. **尽量简洁** 同一import下的方法尽量写到一个表格内，参数说明写在方法说明栏内，尽量不要为参数说明新开一个表格。
 
 ## 文件组织规则
 
