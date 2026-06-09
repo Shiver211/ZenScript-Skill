@@ -36,12 +36,12 @@
 | `.setTabIconItem(IItemStack)` | void | 设置标签页图标物品 |
 | `.setTabLabel(string)` | void | 设置标签页标签 |
 | `.setTabTitle(string)` | void | 设置标签页标题 |
-| `.setBackgroundImage(string)` | void | 设置背景图片 |
+| `.setBackgroundImageName(string)` | void | 设置背景图片 |
 | `.setHasSearchBar(bool)` | void | 设置是否有搜索栏 |
 | `.setSearchBarWidth(int)` | void | 设置搜索栏宽度 |
 | `.setTabsVisibleSingleColumn(bool)` | void | 设置单列是否可见 |
 | `.setTabsVisibleDoubleColumn(bool)` | void | 设置双列是否可见 |
-| `.setNoScrollBar(bool)` | void | 设置无滚动条 |
+| `.setNoScrollBar()` | void | 设置无滚动条 |
 | `.setNoTitle()` | void | 设置无标题 |
 
 ---

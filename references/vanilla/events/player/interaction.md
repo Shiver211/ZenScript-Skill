@@ -55,7 +55,7 @@
 
 玩家右键方块时触发。可取消。取消后可设置 `cancellationResult` 为 `success`、`fail` 或 `pass`（默认为 `pass`）。
 
-实现接口：IEventCancelable, IProcessableEvent, IEventPositionable, IPlayerEvent
+实现接口：IEventCancelable, IHasCancellationResult, IEventPositionable, IPlayerEvent
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
@@ -83,7 +83,7 @@
 
 玩家右键实体时触发。可取消。取消后可设置结果。
 
-实现接口：IEventCancelable, IProcessableEvent, IEventPositionable, IPlayerEvent
+实现接口：IEventCancelable, IEventPositionable, IPlayerEvent
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
@@ -108,7 +108,7 @@
 
 在物品功能触发前触发（当玩家未指向方块或实体时）。可取消以阻止后续事件。
 
-实现接口：IEventCancelable, IProcessableEvent, IEventPositionable, IPlayerEvent
+实现接口：IEventCancelable, IHasCancellationResult, IEventPositionable, IPlayerEvent
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
@@ -133,7 +133,7 @@
 
 玩家左键方块时触发。可取消以阻止左键操作（阻止方块破坏，但在创造模式下无效）。按住左键时即使取消也会持续触发。取消后可设置结果。
 
-实现接口：IEventCancelable, IProcessableEvent, IEventPositionable, IPlayerEvent
+实现接口：IEventCancelable, IHasCancellationResult, IEventPositionable, IPlayerEvent
 
 | 属性 | 类型 | 说明 |
 |------|------|------|

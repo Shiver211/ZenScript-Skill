@@ -22,7 +22,7 @@
 |------|------|------|------|
 | `shooter` | 是 | IEntity | 射出者 |
 | `damage` | 是 | double | 伤害值 |
-| `knockbackStrength` | 是 | int | 击退强度 |
+| `knockbackStrength` | 否 | int | 击退强度 |
 | `isCritical` | 是 | boolean | 是否暴击 |
 | `pickupStatus` | 是 | String | 拾取状态 |
 | `shake` | 否 | int | 抖动值 |
@@ -104,8 +104,8 @@
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
-| `loveCause` | IPlayer | 导致繁殖的玩家（可能为 null） |
-| `isInLove` | bool | 是否处于繁殖状态 |
+| `loveCause` | IPlayer | 导致繁殖的玩家（可能为 null），只读 |
+| `isInLove` | bool | 是否处于繁殖状态，只读 |
 
 #### 方法
 

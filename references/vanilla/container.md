@@ -30,8 +30,8 @@
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.getStackInSlot(int)` | IItemStack | 获取指定槽的物品 |
-| `.setStackInSlot(int, IItemStack)` | void | 设置指定槽的物品 |
+| `.getStack(int)` | IItemStack | 获取指定槽的物品 |
+| `.setStack(int, IItemStack)` | void | 设置指定槽的物品 |
 | `.insertItem(int, IItemStack, bool)` | IItemStack | 插入物品 |
 | `.extractItem(int, int, bool)` | IItemStack | 提取物品 |
 | `.getSlotLimit(int)` | int | 获取槽容量限制 |

@@ -23,7 +23,7 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `name` | string | 玩家名称 |
 | `displayName` | string | 显示名称 |
 | `uuid` | string | UUID |
-| `xp` | int | 经验值 |
+| `xp` | int | 经验等级（可读写） |
 | `xpLevel` | int | 经验等级 |
 | `xpCap` | int | 当前等级经验上限 |
 | `health` | float | 生命值 |
@@ -52,7 +52,7 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `isEntityAlive` | bool | 是否存活 |
 | `dimension` | int | 维度 ID |
 | `world` | IWorld | 所在世界 |
-| `position` | IBlockPos | 位置 |
+| `position` | Position3f | 位置（可读写） |
 | `x` | double | X 坐标 |
 | `y` | double | Y 坐标 |
 | `z` | double | Z 坐标 |
@@ -68,7 +68,7 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `currentItem` | IItemStack | 当前手持物品 |
 | `foodStats` | IFoodStats | 食物状态 |
 | `bedLocation` | IBlockPos | 床的位置 |
-| `fishHook` | IEntity | 鱼钩实体 |
+| `fishHook` | IEntityFishHook | 鱼钩实体 |
 
 #### 方法
 
@@ -78,13 +78,12 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `.give(IItemStack)` | void | 给予物品 |
 | `.sendChat(string)` | void | 发送消息 |
 | `.sendChat(IChatMessage)` | void | 发送富文本消息 |
-| `.sendStatusMessage(string, @Optional bool)` | void | 发送状态消息。第二个参数为 true 时显示在快捷栏 |
+| `.sendStatusMessage(string OR IFormattedText, @Optional bool)` | void | 发送状态消息。第二个参数为 true 时显示在快捷栏（默认 true） |
 | `.sendRichTextStatusMessage(ITextComponent, @Optional bool)` | void | 发送富文本状态消息 |
 | `.sendToast(string, string)` | void | 发送通知 |
 | `.executeCommand(string)` | void | 执行命令 |
 | `.attackEntityFrom(IDamageSource, float)` | void | 造成伤害 |
 | `.heal(float)` | void | 治疗 |
-| `.setHealth(float)` | void | 设置生命值 |
 | `.setFoodLevel(int)` | void | 设置饥饿值 |
 | `.setSaturation(float)` | void | 设置饱和度 |
 | `.addExperience(int)` | void | 添加经验 |

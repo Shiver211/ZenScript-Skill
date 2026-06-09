@@ -28,8 +28,8 @@ IItemStack、IOreDictEntry、ILiquidStack 都实现了此接口。
 | `.liquids` | List\<ILiquidStack\> | 匹配的流体列表 |
 | `.commandString` | string | 命令字符串 |
 | `.transform(IItemStack function(IItemStack, IPlayer))` | IIngredient | 自定义转换 |
-| `.transformNew(IItemStack function(IItemStack, IPlayer))` | IIngredient | 自定义转换（新物品） |
-| `.only(IItemStack function(IItemStack, IPlayer))` | IIngredient | 自定义条件 |
+| `.transformNew(IItemStack function(IItemStack))` | IIngredient | 自定义转换（新物品，只接收 item 参数） |
+| `.only(IItemStack function(IItemStack))` | IIngredient | 自定义条件（只接收 item 参数） |
 | `.matches(IItemStack)` | bool | 是否匹配 |
 | `.matchesExact(IItemStack)` | bool | 是否精确匹配 |
 | `.matches(ILiquidStack)` | bool | 是否匹配流体 |
@@ -82,6 +82,7 @@ val wItem2 = <minecraft:diamond>.weight(0.2); // 同上（0.2 = 20%）
 | `.onlyWithTag(IData)` | 需要**只**带有指定 NBT |
 | `.withDamage(int)` | 输出带有指定耐久 |
 | `.only(function)` | 自定义条件函数 |
+| `.onlyStack(int)` | 物品堆叠数量至少为指定值 |
 
 ```zenscript
 // 有损耗的铁镐才能参与合成

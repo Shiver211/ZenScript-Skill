@@ -97,14 +97,16 @@ inventory.setStack(row, column, item); // row: int, column: int, item: IItemStac
 ## 添加有序合成
 
 ```zenscript
-recipes.addShaped(recipeName, output, inputBox);
-recipes.addShapedMirrored(recipeName, output, inputBox);  // 可翻转
-recipes.addHiddenShaped(recipeName, output, inputBox);    // JEI 隐藏
+recipes.addShaped(recipeName, output, inputBox, @Optional recipeFunction, @Optional recipeAction);
+recipes.addShapedMirrored(recipeName, output, inputBox, @Optional recipeFunction, @Optional recipeAction);  // 可翻转
+recipes.addHiddenShaped(recipeName, output, inputBox, @Optional recipeFunction, @Optional recipeAction, @Optional mirrored);  // JEI 隐藏
 ```
 
 - `recipeName`: string，配方 ID，不能重复。省略则自动生成哈希名
 - `output`: IItemStack，输出物品
 - `inputBox`: IIngredient[][]，二维数组，每行最多 3 个，最多 3 行
+- `recipeFunction`: IRecipeFunction，可选，动态决定输出的函数（详见[配方函数](functions.md)）
+- `recipeAction`: IRecipeAction，可选，合成完成后执行的函数（详见[配方函数](functions.md)）
 
 `addHiddenShaped` 还支持一个可选的 `mirrored` boolean 参数，省略则为 false。
 
@@ -135,11 +137,13 @@ recipes.addShapedMirrored("bow", <minecraft:bow>, [
 ## 添加无序合成
 
 ```zenscript
-recipes.addShapeless(recipeName, output, inputList);
-recipes.addHiddenShapeless(recipeName, output, inputList);
+recipes.addShapeless(recipeName, output, inputList, @Optional recipeFunction, @Optional recipeAction);
+recipes.addHiddenShapeless(recipeName, output, inputList, @Optional recipeFunction, @Optional recipeAction);
 ```
 
 - `inputList`: IIngredient[]，一维数组
+- `recipeFunction`: IRecipeFunction，可选，动态决定输出的函数（详见[配方函数](functions.md)）
+- `recipeAction`: IRecipeAction，可选，合成完成后执行的函数（详见[配方函数](functions.md)）
 
 ```zenscript
 recipes.addShapeless("ender_eye", <minecraft:ender_eye>, [

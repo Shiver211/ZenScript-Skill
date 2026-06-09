@@ -42,7 +42,7 @@ IEnchantmentDefinition 是附魔本身的定义（不含等级），通过 `<enc
 | 属性 | 类型 | 说明 |
 |------|------|------|
 | `id` | int | 附魔 ID |
-| `name` | string | 附魔名称（可读写） |
+| `name` | string | 附魔名称 |
 | `maxLevel` | int | 最大等级 |
 | `minLevel` | int | 最小等级 |
 | `isAllowedOnBooks` | bool | 是否允许出现在附魔台 |

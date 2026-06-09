@@ -20,7 +20,7 @@ recipes.addShaped(recipeName, output, inputBox, recipeFunction, recipeAction);
 
 - `out`: IItemStack — 配方定义的输出
 - `ins`: 映射 — 包含所有 `.marked()` 标记的输入物品
-- `info`: ICraftingInfo — 合成信息（player, inventory 等）
+- `cInfo`: ICraftingInfo — 合成信息（player, inventory 等）
 
 返回值：
 - 返回 IItemStack 作为实际输出
@@ -33,7 +33,7 @@ recipes.addShaped(recipeName, output, inputBox, recipeFunction, recipeAction);
 配方事件是第 5 个参数，在合成完成后执行。此函数仅在结果与配方输出完全相同时触发。
 
 - `out`: IItemStack — 合成结果
-- `info`: ICraftingInfo — 合成信息
+- `cInfo`: ICraftingInfo — 合成信息
 - `player`: IPlayer — 合成的玩家（**可能为 null**）
 
 ### 示例
@@ -42,7 +42,7 @@ recipes.addShaped(recipeName, output, inputBox, recipeFunction, recipeAction);
 
 ```zenscript
 recipes.addShapeless("fake", <minecraft:diamond>, [<ore:dirt>, <ore:dirt>, <ore:dirt>],
-    function(out, ins, info) {
+    function(out, ins, cInfo) {
         return null;  // 永不输出
     },
 null);
@@ -53,8 +53,8 @@ null);
 ```zenscript
 recipes.addShapeless("nether_recipe", <minecraft:netherrack>,
     [<ore:cobblestone>, <ore:cobblestone>, <ore:cobblestone>],
-    function(out, ins, info) {
-        return info.player.world.dimension == -1 ? out : null;
+    function(out, ins, cInfo) {
+        return cInfo.player.world.dimension == -1 ? out : null;
     },
 null);
 ```
@@ -68,7 +68,7 @@ recipes.addShaped("upgrade", <minecraft:diamond_pickaxe>, [
     [<ore:gemDiamond>, <ore:gemDiamond>, <ore:gemDiamond>],
     [null, <minecraft:golden_pickaxe:*>.marked("p"), null]
 ],
-function(out, ins, info) {
+function(out, ins, cInfo) {
     var data as IData = ins.p.tag;  // 获取标记物品的 NBT
     return out.withTag(data);        // 继承到输出
 },
@@ -80,7 +80,7 @@ null);
 ```zenscript
 recipes.addShapeless("repair", <minecraft:diamond_pickaxe>,
     [<minecraft:diamond_pickaxe>.onlyDamaged().marked("p"), <minecraft:diamond>],
-    function(out, ins, info) {
+    function(out, ins, cInfo) {
         return ins.p.withDamage(max(0, ins.p.damage - 500));
     },
 null);
@@ -91,10 +91,10 @@ null);
 ```zenscript
 recipes.addShapeless("hurt_recipe", <minecraft:sapling>,
     [<minecraft:stick>, <minecraft:leaves>],
-    function(out, ins, info) {
-        return info.player.health > 5 ? out : null;  // 血量 > 5 才能合成
+    function(out, ins, cInfo) {
+        return cInfo.player.health > 5 ? out : null;  // 血量 > 5 才能合成
     },
-    function(out, info, player) {
+    function(out, cInfo, player) {
         player.attackEntityFrom(<damageSource:MAGIC>, 5.0f);  // 扣 5 血
     }
 );
@@ -112,7 +112,7 @@ recipes.addShaped("test", <minecraft:iron_pickaxe>, [
     [null, <minecraft:stick>.marked("stick"), null],
     [null, <minecraft:stick>, null]
 ],
-function(out, ins, info) {
+function(out, ins, cInfo) {
     // ins.stick 访问标记的木棍
     return out;
 },

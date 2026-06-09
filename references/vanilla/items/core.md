@@ -62,6 +62,7 @@ loadedMods["minecraft"].items               // 从 mod 获取所有物品
 | `matchTagExact` | bool | 精确匹配 NBT |
 | `maxItemUseDuration` | int | 最大使用时长 |
 | `capNBT` | IData | 能力 NBT |
+| `repairCost` | int | 修复花费 |
 
 #### @ZenSetter
 
@@ -109,15 +110,15 @@ loadedMods["minecraft"].items               // 从 mod 获取所有物品
 | `.withDisplayName(String)` | IItemStack | 设置显示名（仅单物品，支持 `§` 颜色代码） |
 | `.withLore(String[])` | IItemStack | 设置 Lore（支持 `§` 颜色代码） |
 | `.clearCustomName()` | void | 清除自定义名称 |
-| `.addTooltip(String)` | void | 添加提示（全局生效） |
-| `.addShiftTooltip(String)` | void | 添加 Shift 提示 |
-| `.addShiftTooltip(String, String)` | void | Shift 提示 + 非 Shift 时的提示文字 |
-| `.addAdvancedTooltip(ITooltipFunction fn)` | void | 添加动态提示（函数接收 IItemStack 返回 string） |
-| `.addShiftTooltip(ITooltipFunction fn, @Optional ITooltipFunction infoFn)` | void | 添加动态 Shift 提示（两个参数要么都是函数，要么都是文本） |
-| `.clearTooltip()` | void | 清除所有提示 |
-| `.clearTooltip(bool leaveName)` | void | 清除所有提示，为 true 时保留物品名称 |
-| `.removeTooltip(String regex)` | void | 移除匹配正则表达式的提示 |
-| `.removeTooltipLine(int line)` | void | 移除指定行的提示 |
+| `.addTooltip(String)` | IIngredient | 添加提示（全局生效，链式调用） |
+| `.addShiftTooltip(String)` | IIngredient | 添加 Shift 提示（链式调用） |
+| `.addShiftTooltip(String, String)` | IIngredient | Shift 提示 + 非 Shift 时的提示文字（链式调用） |
+| `.addAdvancedTooltip(ITooltipFunction fn)` | IIngredient | 添加动态提示（函数接收 IItemStack 返回 string，链式调用） |
+| `.addShiftTooltip(ITooltipFunction fn, @Optional ITooltipFunction infoFn)` | IIngredient | 添加动态 Shift 提示（链式调用） |
+| `.clearTooltip()` | IIngredient | 清除所有提示（链式调用） |
+| `.clearTooltip(bool leaveName)` | IIngredient | 清除所有提示，为 true 时保留物品名称（链式调用） |
+| `.removeTooltip(String regex)` | IIngredient | 移除匹配正则表达式的提示（链式调用） |
+| `.removeTooltipLine(int line)` | IIngredient | 移除指定行的提示（链式调用） |
 
 #### 附魔方法
 
@@ -209,8 +210,8 @@ loadedMods["minecraft"].items               // 从 mod 获取所有物品
 | `ores` | List\<IOreDictEntry\> | 所属矿辞列表（包含引用子物品的矿辞） |
 | `owner` | string | 所属 mod 名称 |
 | `defaultInstance` | IItemStack | 默认物品实例 |
-| `creativeTab` | string | 创造模式标签页 |
-| `creativeTabs` | List\<string\> | 所有标签页 |
+| `creativeTab` | ICreativeTab | 创造模式标签页 |
+| `creativeTabs` | ICreativeTab[] | 所有标签页 |
 | `canItemEditBlocks` | bool | 是否可编辑方块 |
 | `itemEnchantability` | int | 附魔能力 |
 | `subItems` | List\<IItemStack\> | 所有子物品列表（服务端 mod 不保证正确） |

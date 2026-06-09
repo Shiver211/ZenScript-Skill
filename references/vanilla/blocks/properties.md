@@ -174,11 +174,11 @@ IMobilityFlag 代表方块的移动标志（如活塞推动行为）。
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.normal()` | IMobilityFlag | 正常 |
-| `.destroy()` | IMobilityFlag | 被破坏 |
-| `.block()` | IMobilityFlag | 阻挡 |
-| `.ignore()` | IMobilityFlag | 忽略 |
-| `.pushOnly()` | IMobilityFlag | 仅推 |
+| `MobilityFlag.normal()` | IMobilityFlag | 正常 |
+| `MobilityFlag.destroy()` | IMobilityFlag | 被破坏 |
+| `MobilityFlag.block()` | IMobilityFlag | 阻挡 |
+| `MobilityFlag.ignore()` | IMobilityFlag | 忽略 |
+| `MobilityFlag.pushOnly()` | IMobilityFlag | 仅推 |
 
 #### 方法
 

@@ -37,7 +37,7 @@ IExplosion 代表一个爆炸对象，可以通过 IWorld 的 `createExplosion` 
 | `world` | IWorld | 爆炸所在的世界 |
 | `placedBy` | IEntityLivingBase | 发起爆炸的实体（TNT 则为放置 TNT 的实体，可能为 null） |
 | `position` | Position3f | 爆炸位置 |
-| `affectedBlockPositions` | IBlockPos[] | 爆炸影响的方块位置列表（`doExplosionA()` 调用前可能为空） |
+| `affectedBlockPositions` | IBlockPos[] | 爆炸影响的方块位置列表（`doExplosionA()` 调用前可能为空，可读写） |
 | `playerKnockbackMap` | Map\<IPlayer, IVector3d\> | 爆炸区域内玩家的击退映射 |
 
 #### 方法

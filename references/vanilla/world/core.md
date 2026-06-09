@@ -29,8 +29,8 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `dimensionName` | string | 维度名称 |
 | `worldType` | string | 世界类型 |
 | `difficulty` | string | 难度 |
-| `isDaytime` | bool | 是否白天 |
-| `isRaining` | bool | 是否下雨 |
+| `dayTime` | bool | 是否白天 |
+| `raining` | bool | 是否下雨 |
 | `isThundering` | bool | 是否雷暴 |
 | `rainStrength` | float | 雨强度 |
 | `thunderStrength` | float | 雷强度 |
@@ -47,6 +47,7 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `borderWarningTime` | double | 边界警告时间 |
 | `maxHeight` | int | 最大高度 |
 | `minHeight` | int | 最小高度 |
+| `surfaceWorld` | bool | 是否为地表世界 |
 | `moonPhase` | int | 当前月相 |
 | `dimensionType` | string | 维度类型名称 |
 | `worldInfo` | IWorldInfo | 世界信息对象，可获取更详细的属性 |
@@ -76,8 +77,8 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `.isBlockNormalCube(IBlockPos)` | bool | 是否普通方块 |
 | `.isBlockFullCube(IBlockPos)` | bool | 是否完整方块 |
 | `.isBlockFullBlock(IBlockPos)` | bool | 是否完整方块 |
-| `.getStrongPower(IBlockPos, EnumFacing)` | int | 获取强红石信号 |
-| `.getRedstonePower(IBlockPos, EnumFacing)` | int | 获取红石信号 |
+| `.getStrongPower(IBlockPos, IFacing)` | int | 获取强红石信号 |
+| `.getRedstonePower(IBlockPos, IFacing)` | int | 获取红石信号 |
 | `.isBlockIndirectlyGettingPowered(IBlockPos)` | bool | 是否间接被红石充能 |
 | `.createExplosion(IEntity, double, double, double, float, bool, bool)` | IExplosion | 创建爆炸对象（不执行）。参数：放置者、坐标、大小、是否引火、是否破坏地形 |
 | `.performExplosion(IEntity, double, double, double, float, bool, bool)` | IExplosion | 创建并执行爆炸。参数：放置者、坐标、大小、是否引火、是否破坏地形 |
@@ -148,6 +149,12 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `y` | int | Y 坐标 |
 | `z` | int | Z 坐标 |
 
+#### 静态方法
+
+| 方法 | 返回 | 说明 |
+|------|------|------|
+| `IBlockPos.fromLong(long)` | IBlockPos | 从 long 转换为方块位置 |
+
 #### 方法
 
 | 方法 | 返回 | 说明 |
@@ -161,8 +168,8 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `.west()` | IBlockPos | 西方坐标 |
 | `.up()` | IBlockPos | 上方坐标 |
 | `.down()` | IBlockPos | 下方坐标 |
-| `.offset(EnumFacing)` | IBlockPos | 指定方向坐标 |
-| `.offset(EnumFacing, int)` | IBlockPos | 指定方向指定距离坐标 |
+| `.offset(IFacing)` | IBlockPos | 指定方向坐标 |
+| `.offset(IFacing, int)` | IBlockPos | 指定方向指定距离坐标 |
 | `.distanceSq(IBlockPos)` | double | 距离平方 |
 | `.distanceSq(double, double, double)` | double | 距离平方 |
 | `.distanceSqToCenter(double, double, double)` | double | 到中心点距离平方 |
@@ -171,7 +178,6 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `.getY()` | int | 获取 Y |
 | `.getZ()` | int | 获取 Z |
 | `.toLong()` | long | 转为 long |
-| `.fromLong(long)` | IBlockPos | 从 long 转换 |
 | `.asPosition3f` | IPosition3f | 转为 Position3f 对象 |
 | `.getOffset(IFacing, int)` | IBlockPos | 获取指定方向偏移指定距离后的新位置 |
 
