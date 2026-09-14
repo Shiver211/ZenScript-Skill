@@ -19,23 +19,16 @@
 | 属性 | 类型 | 说明 |
 |------|------|------|
 | `name` | string | 生物群系名称 |
-| `id` | int | ID |
 | `temperature` | float | 温度 |
 | `rainfall` | float | 降雨量 |
-| `humidity` | float | 湿度 |
 | `canRain` | boolean | 是否可以下雨 |
 | `isSnowyBiome` | boolean | 是否雪地 |
 | `highHumidity` | boolean | 是否高湿度（湿度 > 0.85） |
-| `isHumid` | boolean | 是否潮湿 |
 | `ignorePlayerSpawnSuitability` | boolean | 是否忽略玩家生成适应性 |
 | `waterColorMultiplier` | int | 水颜色倍增器 |
 | `spawningChance` | float | 生物生成概率 |
-| `minHeight` | float | 最小高度 |
-| `maxHeight` | float | 最大高度 |
 | `baseHeight` | float | 基础高度 |
 | `heightVariation` | float | 高度变化 |
-| `enableRain` | boolean | 是否启用雨 |
-| `enableSnow` | boolean | 是否启用雪 |
 | `types` | List\<IBiomeType\> | 此生物群系所属的生物群系类型列表 |
 
 #### 方法
@@ -67,9 +60,6 @@ IBiomeType 代表一种生物群系类型（如森林、沙漠等），通过 `b
 ```zenscript
 // 从世界获取
 val biome = world.getBiome(blockPos);
-
-// 从游戏对象获取
-val biome = game.getBiome("minecraft:plains");
 
 // 获取所有生物群系
 for biome in game.biomes {

@@ -20,62 +20,11 @@ IBlock、IBlockState、IBlockDefinition 核心 API。
 |------|------|------|
 | `definition` | IBlockDefinition | 方块定义 |
 | `meta` | int | Meta 值 |
-| `state` | IBlockState | 方块状态 |
-| `id` | int | 方块 ID |
-| `name` | string | 方块名称 |
-| `displayName` | string | 显示名称 |
-| `commandString` | string | 命令字符串 |
-| `harvestLevel` | int | 挖掘等级 |
-| `harvestTool` | string | 挖掘工具 |
-| `hardness` | float | 硬度 |
-| `resistance` | float | 爆炸抗性 |
-| `opacity` | float | 不透明度 |
-| `lightValue` | int | 亮度 |
-| `lightOpacity` | int | 光照不透明度 |
-| `isFullBlock` | bool | 是否完整方块 |
-| `isFullCube` | bool | 是否完整立方体 |
-| `isNormalCube` | bool | 是否普通方块 |
-| `isOpaque` | bool | 是否不透明 |
-| `isReplaceable` | bool | 是否可替换 |
-| `isAir` | bool | 是否空气 |
-| `isFlammable` | bool | 是否可燃 |
-| `isFireSource` | bool | 是否火源 |
-| `isCollidable` | bool | 是否可碰撞 |
-| `hasTileEntity` | bool | 是否有 Tile Entity |
-| `tickRandomly` | bool | 是否随机 tick |
-| `creativeTab` | string | 创造模式标签页 |
-| `material` | string | 材料 |
-| `slipperiness` | float | 滑度 |
 | `data` | IData | 方块的 TileData（仅通过 `IWorld.getBlock()` 获取时非空） |
 | `fluid` | ILiquidDefinition | 方块的流体 |
+| `blocks` | List\<IBlock\> | 此对象所有可能的方块（来自 IBlockPattern） |
+| `displayName` | string | 显示名称（来自 IBlockPattern） |
 
-#### 方法
-
-| 方法 | 返回 | 说明 |
-|------|------|------|
-| `.getStateFromMeta(int)` | IBlockState | 从 Meta 获取状态 |
-| `.getMetaFromState(IBlockState)` | int | 从状态获取 Meta |
-| `.canProvidePower(IBlockState)` | bool | 是否可提供红石信号 |
-| `.getWeakPower(IBlockState, IBlockAccess, IBlockPos, EnumFacing)` | int | 获取弱红石信号 |
-| `.getStrongPower(IBlockState, IBlockAccess, IBlockPos, EnumFacing)` | int | 获取强红石信号 |
-| `.getComparatorInputOverride(IBlockState, IWorld, IBlockPos)` | int | 获取比较器输入 |
-| `.getCollisionBoundingBox(IBlockState, IBlockAccess, IBlockPos)` | IAxisAlignedBB | 获取碰撞箱 |
-| `.getSelectedBoundingBox(IBlockState, IWorld, IBlockPos)` | IAxisAlignedBB | 获取选择箱 |
-| `.getActualState(IBlockState, IBlockAccess, IBlockPos)` | IBlockState | 获取实际状态 |
-| `.getExtendedState(IBlockState, IBlockAccess, IBlockPos)` | IBlockState | 获取扩展状态 |
-| `.getDrops(IWorld, IBlockPos, IBlockState, int)` | List | 获取掉落物 |
-| `.getItem(IWorld, IBlockPos, IBlockState)` | IItemStack | 获取物品 |
-| `.quantityDropped(IRandom)` | int | 掉落数量 |
-| `.getPickBlock(IBlockState, IRayTraceResult, IWorld, IBlockPos, IEntityPlayer)` | IItemStack | 获取拾取物品 |
-| `.getExplosionResistance(IEntity)` | float | 获取爆炸抗性 |
-| `.getEnchantPowerBonus(IWorld, IBlockPos)` | float | 获取附魔台加成 |
-| `.getFireSpreadSpeed(IWorld, IBlockPos, EnumFacing)` | int | 获取火焰传播速度 |
-| `.getFlammability(IWorld, IBlockPos, EnumFacing)` | int | 获取可燃性 |
-| `.getLightValue(IBlockState)` | int | 获取亮度 |
-| `.getAmbientOcclusionLightValue(IBlockState)` | float | 获取环境光遮蔽值 |
-| `.shouldSideBeRendered(IBlockState, IBlockAccess, IBlockPos, EnumFacing)` | bool | 是否应渲染面 |
-| `.isPassable(IWorld, IBlockPos)` | bool | 是否可通过 |
-| `.isToolEffective(string, IBlockState)` | bool | 工具是否有效 |
 
 ### IBlockState（方块状态）
 
@@ -87,22 +36,7 @@ IBlock、IBlockState、IBlockDefinition 核心 API。
 |------|------|------|
 | `block` | IBlock | 方块 |
 | `meta` | int | Meta 值 |
-| `id` | int | 方块 ID |
-| `name` | string | 方块名称 |
-| `displayName` | string | 显示名称 |
-| `commandString` | string | 命令字符串 |
-| `isNormalCube` | bool | 是否普通方块 |
-| `isOpaque` | bool | 是否不透明 |
-| `isFullCube` | bool | 是否完整立方体 |
-| `isFullBlock` | bool | 是否完整方块 |
-| `hasCustomBreakingProgress` | bool | 是否有自定义破坏进度 |
-| `isReplaceable` | bool | 是否可替换 |
-| `isAir` | bool | 是否空气 |
-| `isCollidable` | bool | 是否可碰撞 |
-| `isBlockNormalCube` | bool | 是否普通方块 |
-| `doesSideBlockRendering` | bool | 是否渲染面 |
-| `renderType` | int | 渲染类型 |
-| `canProvidePower` | bool | 是否可提供红石信号 |
+| `commandString` | string | 命令字符串（可用作方块状态括号处理器表达式） |
 
 #### 静态方法
 
@@ -118,35 +52,8 @@ IBlock、IBlockState、IBlockDefinition 核心 API。
 | `.getPropertyValue(string)` | string | 获取指定属性的值 |
 | `.getAllowedValuesForProperty(string)` | List\<string\> | 获取指定属性的所有允许值 |
 | `.withProperty(string, string)` | IBlockState | 创建新 IBlockState 并设置指定属性值 |
-| `.getProperties()` | Map | 获取所有属性 |
-| `.getValue(IProperty)` | IPropertyValue | 获取属性值 |
-| `.withProperty(IProperty, IPropertyValue)` | IBlockState | 设置属性值 |
-| `.cycleProperty(IProperty)` | IBlockState | 循环属性值 |
+| `.getProperties()` | Map | 获取所有属性（属性名 → 值 的映射） |
 | `.isReplaceable(IWorld, IBlockPos)` | bool | 检查方块是否可替换 |
-| `.getActualState(IBlockAccess, IBlockPos)` | IBlockState | 获取实际状态 |
-| `.getBoundingBox(IBlockAccess, IBlockPos)` | IAxisAlignedBB | 获取碰撞箱 |
-| `.addCollisionBoxToList(IWorld, IBlockPos, IAxisAlignedBB, List, IEntity, bool)` | void | 添加碰撞箱 |
-| `.getDrops(IWorld, IBlockPos, int)` | List | 获取掉落物 |
-| `.getPlayerRelativeBlockHardness(IPlayer, IWorld, IBlockPos)` | float | 获取相对破坏速度 |
-| `.getEnchantPowerBonus(IWorld, IBlockPos)` | float | 获取附魔台加成 |
-| `.getExplosionResistance(IEntity)` | float | 获取爆炸抗性 |
-| `.getAmbientOcclusionLightValue()` | float | 获取环境光遮蔽值 |
-| `.getLightValue(IWorld, IBlockPos)` | int | 获取亮度 |
-| `.getWeakPower(IBlockAccess, IBlockPos, EnumFacing)` | int | 获取弱红石信号 |
-| `.getStrongPower(IBlockAccess, IBlockPos, EnumFacing)` | int | 获取强红石信号 |
-| `.canProvidePower()` | bool | 是否可提供红石信号 |
-| `.isNormalCube()` | bool | 是否普通方块 |
-| `.isOpaque()` | bool | 是否不透明 |
-| `.isFullCube()` | bool | 是否完整立方体 |
-| `.isFullBlock()` | bool | 是否完整方块 |
-| `.hasCustomBreakingProgress()` | bool | 是否有自定义破坏进度 |
-| `.isReplaceable()` | bool | 是否可替换 |
-| `.isAir()` | bool | 是否空气 |
-| `.isCollidable()` | bool | 是否可碰撞 |
-| `.doesSideBlockRendering()` | bool | 是否渲染面 |
-| `.shouldSideBeRendered(IBlockAccess, IBlockPos, EnumFacing)` | bool | 是否应渲染面 |
-| `.getCollisionBoundingBox(IWorld, IBlockPos)` | IAxisAlignedBB | 获取碰撞箱 |
-| `.getSelectedBoundingBox(IWorld, IBlockPos)` | IAxisAlignedBB | 获取选择箱 |
 | `.compare(IBlockState)` | int | 比较两个状态，相等返回 0（也可使用 `==` `!=`） |
 | `.matchBlock()` | IBlockStateMatcher | 获取匹配此方块所有状态的 IBlockStateMatcher |
 

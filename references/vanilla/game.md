@@ -59,7 +59,6 @@
 | `.localize(string)` | string | 获取本地化字符串 |
 | `.localize(string, string)` | string | 获取指定语言的本地化字符串 |
 | `.getEntity(string)` | IEntityDefinition | 获取实体定义（等同于 `<entity:...>`） |
-| `.getPotion(string)` | IPotion | 获取药水效果 |
 
 ### IClient（客户端）
 

@@ -28,26 +28,15 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `dimension` | int | 维度 ID |
 | `dimensionName` | string | 维度名称 |
 | `worldType` | string | 世界类型 |
-| `difficulty` | string | 难度 |
 | `dayTime` | bool | 是否白天 |
 | `raining` | bool | 是否下雨 |
-| `isThundering` | bool | 是否雷暴 |
-| `rainStrength` | float | 雨强度 |
-| `thunderStrength` | float | 雷强度 |
 | `time` | long | 世界时间 |
 | `totalTime` | long | 总时间 |
-| `seed` | long | 种子 |
 | `seaLevel` | int | 海平面高度 |
-| `spawnPoint` | IBlockPos | 出生点 |
 | `borderCenterX` | double | 边界中心 X |
 | `borderCenterZ` | double | 边界中心 Z |
 | `borderSize` | double | 边界大小 |
 | `borderDamagePerBlock` | double | 边界每格伤害 |
-| `borderWarningDistance` | double | 边界警告距离 |
-| `borderWarningTime` | double | 边界警告时间 |
-| `maxHeight` | int | 最大高度 |
-| `minHeight` | int | 最小高度 |
-| `surfaceWorld` | bool | 是否为地表世界 |
 | `moonPhase` | int | 当前月相 |
 | `dimensionType` | string | 维度类型名称 |
 | `worldInfo` | IWorldInfo | 世界信息对象，可获取更详细的属性 |
@@ -64,8 +53,6 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `.setBlockState(IBlockState, IData, IBlockPos)` | bool | 设置方块状态并指定 TileEntity NBT 数据 |
 | `.getBlockState(IBlockPos)` | IBlockState | 获取方块状态 |
 | `.getBlockState(int, int, int)` | IBlockState | 获取方块状态 |
-| `.getTileEntity(IBlockPos)` | ITileEntity | 获取 Tile Entity |
-| `.getLightFor(EnumSkyBlock, IBlockPos)` | int | 获取光照 |
 | `.getLightValue(IBlockPos)` | int | 获取光照值 |
 | `.getBrightness(int, int, int)` | int | 获取指定坐标的亮度 |
 | `.getBrightness(IBlockPos)` | int | 获取指定位置的亮度 |
@@ -88,25 +75,14 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `.removeEntity(IEntity)` | bool | 移除实体 |
 | `.removeEntity(int)` | void | 移除实体 |
 | `.getEntity(int)` | IEntity | 获取实体 |
-| `.getEntitiesWithinAABB(Class, IAxisAlignedBB)` | List | 获取 AABB 内实体 |
-| `.addBlockEvent(IBlockPos, Block, int, int)` | void | 添加方块事件 |
 | `.getBiome(IBlockPos)` | IBiome | 获取生物群系 |
 | `.getBiome(IPosition3f)` | IBiome | 获取生物群系 |
-| `.getActualHeight()` | int | 获取实际高度 |
-| `.getChunks()` | List | 获取所有区块 |
-| `.getPlayers(Class, Predicate)` | List | 获取玩家列表 |
 | `.setRainStrength(float)` | void | 设置雨强度 |
 | `.setThunderStrength(float)` | void | 设置雷强度 |
-| `.setTime(long)` | void | 设置时间 |
 | `.setTotalTime(long)` | void | 设置总时间 |
 | `.setSpawnPoint(IBlockPos)` | void | 设置出生点 |
-| `.setBlock(int, int, int, Block)` | void | 设置方块 |
-| `.setBlock(int, int, int, Block, int, int)` | void | 设置方块 |
-| `.destroyBlock(IBlockPos, bool)` | bool | 破坏方块 |
-| `.destroyBlock(int, int, int, bool)` | bool | 破坏方块 |
 | `.playSound(IPlayer, IBlockPos, string, string, float, float)` | void | 播放声音 |
 | `.playSound(IPlayer, double, double, double, string, string, float, float)` | void | 播放声音 |
-| `.spawnParticle(string, double, double, double, double, double, double, int...)` | void | 生成粒子 |
 | `.rayTraceBlocks(IVector3d, IVector3d, @Optional bool, @Optional bool, @Optional(true) bool)` | IRayTraceResult | 射线检测。第一个向量为起点，第二个为方向和长度。最后三个参数：是否在液体处停止、是否忽略无碰撞箱方块、是否返回最后不可碰撞方块 |
 | `.getPickedBlock(IBlockPos, IRayTraceResult, IPlayer)` | IItemStack | 获取拾取的方块物品（可返回 null） |
 | `.isSpawnChunk(int, int)` | bool | 检查是否为出生区块 |

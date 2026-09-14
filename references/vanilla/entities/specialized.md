@@ -140,13 +140,7 @@
 |------|------|------|
 | `id` | string | 实体 ID（如 "net.minecraft.entity.passive.EntitySheep"） |
 | `name` | string | 实体名称（如 "Sheep"） |
-| `commandString` | string | 命令字符串 |
-| `width` | float | 宽度 |
-| `height` | float | 高度 |
-| `immuneToFire` | bool | 是否免疫火焰 |
-| `boss` | bool | 是否为 Boss |
-| `creatureType` | string | 生物类型 |
-| `drops` | List<IEntityDrop> | 通过 CT 添加的掉落物列表 |
+| `drops` | List\<IEntityDrop\> | 通过 CT 添加的掉落物列表 |
 
 #### 方法
 

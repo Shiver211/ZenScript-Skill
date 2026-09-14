@@ -24,32 +24,26 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `displayName` | string | 显示名称 |
 | `uuid` | string | UUID |
 | `xp` | int | 经验等级（可读写） |
-| `xpLevel` | int | 经验等级 |
-| `xpCap` | int | 当前等级经验上限 |
 | `health` | float | 生命值 |
 | `maxHealth` | float | 最大生命值 |
 | `foodLevel` | int | 饥饿值 |
 | `saturation` | float | 饱和度 |
 | `creative` | bool | 是否创造模式 |
 | `isCreative` | bool | 是否创造模式（同 creative） |
-| `isSpectator` | bool | 是否旁观者模式 |
 | `adventure` | bool | 是否冒险模式 |
 | `isAdventure` | bool | 是否冒险模式（同 adventure） |
 | `isSurvival` | bool | 是否生存模式 |
-| `isFlying` | bool | 是否飞行 |
-| `isSleeping` | bool | 是否睡觉 |
 | `isSneaking` | bool | 是否潜行 |
 | `isSprinting` | bool | 是否冲刺 |
 | `isElytraFlying` | bool | 是否鞘翅飞行 |
-| `isBlocking` | bool | 是否格挡 |
+| `isActiveItemStackBlocking` | bool | 是否正在用物品格挡 |
 | `isBurning` | bool | 是否着火 |
 | `isInWater` | bool | 是否在水中 |
 | `onGround` | bool | 是否在地面上 |
 | `isRiding` | bool | 是否骑乘 |
 | `isInvisible` | bool | 是否隐身 |
 | `isInvulnerable` | bool | 是否无敌 |
-| `isDead` | bool | 是否死亡 |
-| `isEntityAlive` | bool | 是否存活 |
+| `alive` | bool | 是否存活 |
 | `dimension` | int | 维度 ID |
 | `world` | IWorld | 所在世界 |
 | `position` | Position3f | 位置（可读写） |
@@ -62,7 +56,6 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `offHandHeldItem` | IItemStack | 副手物品 |
 | `mainHandHeldItem` | IItemStack | 主手物品 |
 | `data` | IData | 玩家数据 |
-| `gameType` | string | 游戏模式 |
 | `hotbarSize` | int | 快捷栏大小 |
 | `inventorySize` | int | 背包大小 |
 | `currentItem` | IItemStack | 当前手持物品 |

@@ -18,12 +18,12 @@
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `Math.max(double/float/int/long, double/float/int/long)` | 同类型 | 最大值 |
-| `Math.min(double/float/int/long, double/float/int/long)` | 同类型 | 最小值 |
+| `Math.max(double/float/int, double/float/int)` | 同类型 | 最大值 |
+| `Math.min(double/float/int, double/float/int)` | 同类型 | 最小值 |
 | `Math.floor(double)` | int | 向下取整 |
 | `Math.ceil(double)` | int | 向上取整 |
 | `Math.round(double/float)` | int | 四舍五入 |
-| `Math.abs(double/float/int/long)` | 同类型 | 绝对值 |
+| `Math.abs(double/float/int)` | 同类型 | 绝对值 |
 | `Math.sqrt(double)` | double | 开方 |
 | `Math.log(double)` | double | 自然对数 |
 | `Math.log10(double)` | double | 常用对数 |

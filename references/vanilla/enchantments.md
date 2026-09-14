@@ -28,7 +28,6 @@ IEnchantment 是附魔定义加上附魔等级的组合。
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.makeStack(int)` | IEnchantment | 创建指定等级的附魔 |
 | `.makeTag()` | IData | 获取附魔的 NBT 标签（也可用 `ench as IData`） |
 
 ### IEnchantmentDefinition（附魔定义）

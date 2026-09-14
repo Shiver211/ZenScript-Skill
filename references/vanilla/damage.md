@@ -18,8 +18,6 @@
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
-| `name` | string | 伤害来源名称 |
-| `commandString` | string | 命令字符串 |
 | `damageType` | string | 伤害类型 |
 | `harmInCreative` | bool | 是否可在创造模式造成伤害 |
 | `hungerDamage` | float | 饥饿伤害 |
@@ -41,9 +39,7 @@
 | `isMagicDamage` | bool | 是否魔法伤害（同 magicDamage） |
 | `isExplosion` | bool | 是否爆炸伤害（同 explosion） |
 | `isProjectile` | bool | 是否弹射物伤害（同 projectile） |
-| `isFallDamage` | bool | 是否摔落伤害 |
 | `isCreativePlayer` | bool | 是否创造模式玩家（同 creativePlayer） |
-| `damageEntity` | IEntity | 造成伤害的实体 |
 
 #### 方法
 
@@ -72,7 +68,6 @@
 | `.setFireDamage()` | IDamageSource | 设置为火焰伤害 |
 | `.setMagicDamage()` | IDamageSource | 设置为魔法伤害 |
 | `.setProjectile()` | IDamageSource | 设置为弹射物伤害 |
-| `.setFallDamage()` | IDamageSource | 设置为摔落伤害 |
 
 ### 创建 IDamageSource（静态方法）
 

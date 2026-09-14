@@ -55,7 +55,6 @@
 | vanilla/container.md | 容器 | IContainer, 容器操作 |
 | vanilla/biomes.md | 生物群系 | IBiome, 生物群系操作 |
 | vanilla/dispenser.md | 发射器 | 发射器配方 |
-| vanilla/tile-entity.md | 方块实体 | ITileEntity, 方块实体操作 |
 | vanilla/creative-tabs.md | 创造标签页 | ICreativeTab, CreativeTab, 自定义创造标签 |
 | vanilla/villager.md | 村民 | 村民交易 |
 | vanilla/village.md | 村庄 | 村庄声望, IVillage, 村庄半径, 村庄门 |

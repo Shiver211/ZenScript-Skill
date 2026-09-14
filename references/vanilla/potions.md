@@ -24,8 +24,7 @@
 | `liquidColor` | int | 液体颜色 |
 | `liquidColour` | int | 液体颜色（同上，英式拼写） |
 | `badEffect` | bool | 是否负面效果 |
-| `beneficial` | bool | 是否正面效果 |
-| `isBeneficial` | bool | 是否正面效果（同 beneficial） |
+| `isBeneficial` | bool | 是否正面效果 |
 | `isInstant` | bool | 是否即时效果 |
 | `hasStatusIcon` | bool | 是否有状态图标 |
 | `curativeItems` | List\<IItemStack\> | 治愈物品列表 |
@@ -88,9 +87,9 @@ IPotionType 代表一种药水类型（如力量药水、治疗药水等），�
 ### 获取药水效果
 
 ```zenscript
-// 通过游戏对象获取
-val speed = game.getPotion("minecraft:speed");
-val slowness = game.getPotion("minecraft:slowness");
+// 通过药水括号处理器获取
+val speed = <potion:minecraft:speed>;
+val slowness = <potion:minecraft:slowness>;
 
 // 创建药水效果
 val speedEffect = speed.makePotionEffect(600, 1);  // 30秒，等级1

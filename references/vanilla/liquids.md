@@ -44,11 +44,8 @@ ILiquidStack 由流体定义和可选的 tag/数量组成。ILiquidStack 实现�
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.amount(int)` | ILiquidStack | 设置数量 |
-| `.withAmount(int)` | ILiquidStack | 设置数量（同上） |
-| `stack * n` | ILiquidStack | 设置数量 |
-| `.matches(ILiquidStack)` | bool | 是否匹配 |
-| `.contains(ILiquidStack)` | bool | 是否包含 |
+| `stack * n` | ILiquidStack | 设置数量（mB） |
+| `.matches(ILiquidStack)` | bool | 是否匹配（来自 IIngredient） |
 
 #### IIngredient 限制
 
