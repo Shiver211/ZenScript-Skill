@@ -15,8 +15,8 @@
 | 预处理器 | 说明 |
 |---------|------|
 | `#priority <数字>` | 加载优先级（越大越先加载） |
-| `#modloaded <modID>` | mod 加载时才执行（支持 `!` 取反） |
-| `#loader <loaderName>` | 指定加载器（默认 `crafttweaker`） |
+| `#modloaded <modID ...>` | 指定的 mod 全部加载时才执行（空格分隔指定多个Mod；单个前加 `!` 取反） |
+| `#loader <loaderName ...>` | 指定加载器（默认 `crafttweaker`）。可用空格分隔**同时指定多个**加载器 |
 | `#sideonly <side>` | 只在 client 或 server 执行 |
 | `#debug` | 开启全局 debug 模式，输出**解析后的脚本文件**到日志 |
 | `#ignoreBracketErrors` | 忽略尖括号错误 |

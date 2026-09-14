@@ -1,6 +1,6 @@
 # Color CraftTweaker API 参考
 
-> Mod ID: `minecraft`
+> Mod ID: `contenttweaker`
 > 前置条件: ContentTweaker
 > 导入: `import mods.contenttweaker.Color;`
 

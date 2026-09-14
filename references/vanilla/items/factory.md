@@ -32,11 +32,13 @@ CoT 脚本第一行必须为 `#loader contenttweaker`。
 | `maxStackSize` | int | 64 | 最大堆叠数 |
 | `maxDamage` | int | -1 | 耐久（<0 为普通物品，>0 为工具） |
 | `rarity` | string | "COMMON" | 稀有度: "COMMON"/"UNCOMMON"/"RARE"/"EPIC" |
+| `unlocalizedName` | string | —（**必填**） | 未本地化名称，必须全小写 |
 | `creativeTab` | ICreativeTab | 杂项 | 所在创造标签 |
 | `glowing` | bool | false | 是否有附魔光芒 |
 | `beaconPayment` | bool | false | 是否可作为信标消耗品 |
 | `toolClass` | string | null | 工具类型（"pickaxe"/"axe" 等） |
 | `toolLevel` | int | -1 | 工具挖掘等级 |
+| `itemUseAction` | string | "NONE" | 使用动画，可选 `"NONE"`/`"EAT"`/`"DRINK"`/`"BLOCK"`/`"BOW"` |
 | `itemRightClick` | IItemRightClick | null | 右键回调 |
 | `onItemUse` | IItemUse | null | 对方块使用回调 |
 | `onItemFoodEaten` | IItemFoodEaten | null | 吃下回调（仅 ItemFood） |
@@ -48,7 +50,8 @@ CoT 脚本第一行必须为 `#loader contenttweaker`。
 | `itemGetContainerItem` | IItemGetContainerItem | null | 容器物品函数 |
 | `itemColorSupplier` | IItemColorSupplier | null | 物品颜色函数 |
 | `localizedNameSupplier` | ILocalizedNameSupplier | null | 显示名函数 |
-| `textureLocation` | CTResourceLocation | null | 物品的纹理资源位置；若需函数式写法见下方 IResourceLocationSupplier） |
+| `smeltingExprerience` | float | -1 | 熔炼该物品获得的经验 |
+| `textureLocation` | CTResourceLocation | null | 物品的纹理资源位置；若需函数式写法见下方 IResourceLocationSupplier |
 
 | 方法 | 返回 | 说明 |
 |------|------|------|

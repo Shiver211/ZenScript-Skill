@@ -18,6 +18,9 @@ IItemStack、IMutableItemStack、IItemDefinition 核心 API。
 
 ```zenscript
 <minecraft:apple>                           // 尖括号（最常用）
+<item:minecraft:apple>                      // 带 item: 前缀，等价写法
+<minecraft:coal:1>                          // 指定 meta
+<minecraft:coal:*>                          // meta 通配（匹配所有 meta）
 <minecraft:stone>.definition.makeStack(0)   // 通过 IItemDefinition
 <ore:ingotGold>.items                       // 从矿辞获取列表
 <ore:ingotGold>.firstItem                   // 从矿辞获取第一个

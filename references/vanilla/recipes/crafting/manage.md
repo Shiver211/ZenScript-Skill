@@ -23,6 +23,16 @@ recipes.removeShaped(<minecraft:stick> * 4, [
     [<ore:plankWood>]
 ]);
 
+// 用 <*> 占位：删除所有 3x3、每格都有物品的有序配方（不关心具体是什么）
+recipes.removeShaped(<minecraft:crafting_table>, [
+    [<*>, <*>, <*>],
+    [<*>, <*>, <*>],
+    [<*>, <*>, <*>]
+]);
+
+// 省略 inputs：等价于按 output 移除，但只匹配有序配方
+recipes.removeShaped(<minecraft:stick> * 4);
+
 // 移除特定无序配方
 recipes.removeShapeless(<minecraft:book>, [
     <minecraft:paper>, <minecraft:paper>, <minecraft:paper>, <minecraft:leather>
@@ -50,7 +60,8 @@ recipes.removeAll();
 ```
 
 - `recipes.remove(output, NBTMatch)`: `output` 是 IIngredient，`NBTMatch` 是可选的 boolean（默认 false），为 true 时仅移除 NBT 数据完全匹配的配方
-- `recipes.removeShapeless(output, inputs, wildcard)`: `wildcard` 是可选的 boolean（默认 false），为 true 时会移除含有指定材料但不限制其他材料的无序配方
+- `recipes.removeShaped(output, inputs)`: `inputs` 是 IIngredient[][]，**可省略**——省略时等价于按 output 移除，但只匹配有序配方。`inputs` 中可用 `<*>` 占位，表示「该槽只要有物品即可，不关心是什么」
+- `recipes.removeShapeless(output, inputs, wildcard)`: `inputs` 同样**可省略**（省略时只匹配无序配方）；`wildcard` 是可选的 boolean（默认 false），为 true 时会移除含有指定材料但不限制其他材料的无序配方
 - `recipes.removeByInput(ingredient)`: `ingredient` 是 IIngredient，移除所有包含该材料作为输入的配方
 
 ---

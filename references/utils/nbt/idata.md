@@ -41,8 +41,9 @@ var listData as IData = [1 as int, 2 as int, 3 as int] as IData;
 // 类型转换方法
 myData.asInt();      myData.asLong();     myData.asDouble();
 myData.asFloat();    myData.asBool();     myData.asString();
+myData.asByte();     myData.asShort();
 myData.asList();     myData.asMap();
-```
+``
 
 **注意**：字符串转数值时若非纯数字，报错并返回 0：
 
@@ -60,9 +61,11 @@ print(("3.14" as IData).asDouble());  // 输出 3.14
 |------|-----|-----|-----|-----|-----|-----|------|------|------|------|----------------|
 | DataBool | - | - | - | - | - | Y | Y | Y | Y | Y | - |
 | DataByte | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y |
+| DataByte[] | - | - | - | - | - | - | - | - | Y | Y | - |
 | DataDouble | Y | Y | Y | Y | Y | - | - | - | Y | Y | Y |
 | DataFloat | Y | Y | Y | Y | Y | - | - | - | Y | Y | Y |
 | DataInt | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y |
+| DataInt[] | Y | - | - | - | - | - | - | - | Y | Y | - |
 | DataLong | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y |
 | DataShort | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y |
 | DataString | Y | - | - | - | - | - | - | - | Y | Y | Y |
@@ -83,13 +86,17 @@ print(("3.14" as IData).asDouble());  // 输出 3.14
 
 ## 索引与成员访问
 
-| 子类 | `[i]` | `.member` | `.length` | `.immutable` | `.update(v)` |
-|------|-------|-----------|-----------|--------------|--------------|
-| DataBool | - | - | 返回 0 | Y | Y |
-| DataInt/Long/Short/Byte/Float/Double | - | - | 返回 0 | Y | Y |
-| DataString | Y | - | Y | Y | Y |
-| DataList | Y | - | Y | Y | Y |
-| DataMap | - | Y | Y | Y | Y |
+| 子类 | `[i]` | `[i]=v` | `.member` | `.member=v` | `.length` | `.immutable` | `.update(v)` |
+|------|-------|---------|-----------|-------------|-----------|--------------|--------------|
+| DataBool | - | - | - | - | 返回 0 | Y | Y |
+| DataInt/Long/Short/Byte/Float/Double | - | - | - | - | 返回 0 | Y | Y |
+| DataString | Y | - | - | - | Y | Y | Y |
+| DataByte[] | Y | Y | - | - | Y | Y | Y |
+| DataInt[] | Y | Y | - | - | Y | Y | Y |
+| DataList | Y | Y | - | - | Y | Y | Y |
+| DataMap | - | - | Y | Y | Y | Y | Y |
+
+> `[i]=v` 与 `.member=v` 是**写入**能力：数组/列表可按索引赋值，DataMap 可按成员名赋值。DataString 虽然可 `[i]` 读取，但**不能**通过 `[i]=v` 修改。
 
 ---
 

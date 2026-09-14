@@ -1,6 +1,6 @@
 # 扩展方法（$expand）
 
-为已有类添加自定义成员方法，使用 `$expand` 语法，`this` 指向被扩展的实例。
+为已有类添加自定义成员方法，使用 `$expand` 语法，`this` 指向被扩展的实例。**在部分情况下也可以替换已有的同名方法。**
 
 ---
 
@@ -16,6 +16,8 @@ $expand <ClassName>$<methodName>(参数) as <返回类型> {
 调用时等同于该类的成员方法：
 
 ```zenscript
+import crafttweaker.item.IItemStack;
+
 $expand IItemStack$show() as void {
     print(this.commandString);
 }

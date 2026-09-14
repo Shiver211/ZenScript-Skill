@@ -8,6 +8,26 @@
 
 ---
 
+## /ct 控制台命令
+
+以下命令在游戏内或控制台执行。前缀 `/ct` 或 `/crafttweaker`。`/ct help` 可列出全部命令。
+
+| 命令 | 用途 |
+|------|------|
+| `/ct syntax` | 检查所有脚本语法——**改完脚本后第一件事**，报错会给出文件名与行号 |
+| `/ct hand` | 打印手持物品的信息（ID、meta、NBT） |
+| `/ct nbt` | 打印手持物品的完整 NBT |
+| `/ct names [category]` | 列出已注册的名称（物品/方块/流体等） |
+| `/ct blockinfo` | 打印当前注视方块的信息 |
+| `/ct liquids` | 列出所有已注册流体 |
+| `/ct mods` | 列出已加载的 mod |
+| `/ct seeds` | 打印所有种子掉落（配合 `vanilla.seeds` 使用） |
+| `/ct dumpzs` | 将 ZenScript 转储到日志，排查脚本加载问题 |
+| `/ct conflict` | 检查配方冲突 |
+| `/ct recipes hand` | 查看手持物品参与的配方 |
+
+---
+
 ## API 列表
 
 ### ICommandSender（命令发送者）

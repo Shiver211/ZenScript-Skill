@@ -93,6 +93,8 @@
 
 ### 预定义伤害来源
 
+**若尖括号里写的不是下列预定义名，会以该名字新建一个伤害源**，不会报错。
+
 ```zenscript
 <damageSource:MAGIC>             // 魔法伤害
 <damageSource:GENERIC>           // 通用伤害

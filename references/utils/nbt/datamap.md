@@ -89,6 +89,9 @@ var dm2 as IData = {"key1": 10, "key3": 3} as IData;
 // "-" 差集：移除共有 Key
 (dm1 - dm2).asString();  // {key2:2}
 (dm2 - dm1).asString();  // {key3:3}
+
+// "-" 也可以直接减去一个字符串 Key，删除单个条目
+(dm1 - "key2").asString();  // {key1:1}
 ```
 
 **多层 `+` 规则**：

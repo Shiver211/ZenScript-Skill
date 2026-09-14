@@ -18,6 +18,7 @@
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
+| `containerSize` | int | 容器大小（槽位总数） |
 | `name` | string | 容器名称 |
 | `displayName` | string | 显示名称 |
 | `commandString` | string | 命令字符串 |
@@ -32,12 +33,15 @@
 |------|------|------|
 | `.getStack(int)` | IItemStack | 获取指定槽的物品 |
 | `.setStack(int, IItemStack)` | void | 设置指定槽的物品 |
+| `.asString()` | string | 容器的字符串表示（也可用 `container as string`） |
 | `.insertItem(int, IItemStack, bool)` | IItemStack | 插入物品 |
 | `.extractItem(int, int, bool)` | IItemStack | 提取物品 |
 | `.getSlotLimit(int)` | int | 获取槽容量限制 |
 | `.isItemValid(int, IItemStack)` | bool | 物品是否可放入槽 |
 | `.clear()` | void | 清空容器 |
 | `.markDirty()` | void | 标记为已修改 |
+
+> **IContainer 是 `Iterable<IItemStack>`**，可以直接用 for 循环遍历容器内的所有物品：
 
 ### IInventorySlot（物品槽）
 
