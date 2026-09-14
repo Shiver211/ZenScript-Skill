@@ -45,7 +45,7 @@ recipes.removeByInput(<minecraft:iron_ingot>);
 // 移除某 mod 所有配方
 recipes.removeByMod("botania");
 
-// 移除所有配方
+// 移除所有工作台合成配方（仅合成台，不含熔炉/酿造等）
 recipes.removeAll();
 ```
 

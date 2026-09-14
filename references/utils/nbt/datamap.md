@@ -93,11 +93,11 @@ var dm2 as IData = {"key1": 10, "key3": 3} as IData;
 
 **多层 `+` 规则**：
 1. 保留不共有 Key 的 Key-Value 对
-2. 共有 Key：Value 类型不同则后者覆盖；均为 DataMap 则递归相加
+2. 共有 Key：均为 DataMap 时递归相加，否则**一律由后者覆盖**
 
 **多层 `-` 规则**：
 1. 保留第一个 Map 中不存在于第二个 Map 的 Key
-2. 共有 Key：Value 类型不同则移除；均为 DataMap 则递归相减
+2. 共有 Key：均为 DataMap 时递归相减，否则**一律移除该 Key**
 
 ### update 方法
 

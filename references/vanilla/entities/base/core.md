@@ -148,4 +148,4 @@ ICommandSender 派生方法：`entity.displayName`、`entity.position`、`entity
 | `.shouldRiderDismountInWater(IEntity)` | boolean | 检查骑乘者是否应在水中下马 |
 | `.isPassenger(IEntity)` | boolean | 检查是否为乘客 |
 | `.isRidingSameEntity(IEntity)` | boolean | 检查是否骑乘同一实体 |
-| `.getRayTrace(double, float, @Optional boolean, @Optional boolean, @Optional boolean)` | IRayTraceResult | 射线追踪 |
+| `.getRayTrace(double, float, @Optional boolean, @Optional boolean, @Optional(valueBoolean = true) boolean)` | IRayTraceResult | 射线追踪。参数依次为（距离, 局部刻, 命中流体即停, 忽略无碰撞箱方块, **返回最后未碰撞方块——默认 true**） |

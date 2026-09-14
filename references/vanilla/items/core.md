@@ -98,10 +98,10 @@ loadedMods["minecraft"].items               // 从 mod 获取所有物品
 |------|------|------|
 | `.withEmptyTag()` | IItemStack | 设置空 NBT |
 | `.withTag(IData)` | IItemStack | 设置 NBT（覆盖） |
-| `.withTag(IData, bool)` | IItemStack | bool 为 true 时合并而非覆盖 |
-| `.removeTag(String)` | IItemStack | 移除指定 NBT 键 |
+| `.withTag(IData, bool)` | IItemStack | 第二个参数为 `matchTagExact`：控制配方匹配时 NBT 是否须精确相符 |
+| `.removeTag(String)` | IItemStack | 移除指定 NBT 键。**传 `null` 可清空全部 NBT** |
 | `.updateTag(IData)` | IItemStack | 合并 NBT（不覆盖已有键） |
-| `.updateTag(IData, bool)` | IItemStack | 同上，bool 控制行为 |
+| `.updateTag(IData, bool)` | IItemStack | 同上，第二个参数为 `matchTagExact` |
 
 #### 显示方法
 
@@ -113,7 +113,7 @@ loadedMods["minecraft"].items               // 从 mod 获取所有物品
 | `.addTooltip(String)` | IIngredient | 添加提示（全局生效，链式调用） |
 | `.addShiftTooltip(String)` | IIngredient | 添加 Shift 提示（链式调用） |
 | `.addShiftTooltip(String, String)` | IIngredient | Shift 提示 + 非 Shift 时的提示文字（链式调用） |
-| `.addAdvancedTooltip(ITooltipFunction fn)` | IIngredient | 添加动态提示（函数接收 IItemStack 返回 string，链式调用） |
+| `.addAdvancedTooltip(ITooltipFunction fn)` | IIngredient | 添加动态提示（函数接收 IItemStack 返回 string，链式调用）。函数内 `format.*` 无效，只能用 `§` 格式前缀 |
 | `.addShiftTooltip(ITooltipFunction fn, @Optional ITooltipFunction infoFn)` | IIngredient | 添加动态 Shift 提示（链式调用） |
 | `.clearTooltip()` | IIngredient | 清除所有提示（链式调用） |
 | `.clearTooltip(bool leaveName)` | IIngredient | 清除所有提示，为 true 时保留物品名称（链式调用） |
@@ -160,7 +160,7 @@ loadedMods["minecraft"].items               // 从 mod 获取所有物品
 | `.mutable()` | IMutableItemStack | 转为可变堆叠（原地修改） |
 | `.getCapNBT()` | IData | 获取能力 NBT |
 | `.withCapNBT(IData)` | IItemStack | 设置能力 NBT |
-| `.liquid` | ILiquidStack | 获取关联流体（如桶） |
+| `.liquid` | ILiquidStack | 获取关联流体（如桶）。**非容器物品返回 null** |
 | `.isFood` | bool | 是否为食物 |
 | `.healAmount` | int | 恢复饥饿值 |
 | `.saturation` | float | 饱和度 |

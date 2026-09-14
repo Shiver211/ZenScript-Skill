@@ -33,7 +33,7 @@ import crafttweaker.data.IData;
 // 基础类型转 IData（必须加 as IData）
 var myData as IData = "hello" as IData;   // DataString
 myData = 42 as IData;                     // DataInt
-myData = 3.14 as double;                  // DataDouble
+myData = 3.14 as IData;                   // DataDouble
 
 // 数组转 IData（建议加上 as IData）
 var listData as IData = [1 as int, 2 as int, 3 as int] as IData;

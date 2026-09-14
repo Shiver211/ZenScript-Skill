@@ -102,7 +102,7 @@ recipes.addShapedMirrored(recipeName, output, inputBox, @Optional recipeFunction
 recipes.addHiddenShaped(recipeName, output, inputBox, @Optional recipeFunction, @Optional recipeAction, @Optional mirrored);  // JEI 隐藏
 ```
 
-- `recipeName`: string，配方 ID，不能重复。省略则自动生成哈希名
+- `recipeName`: string，配方 ID，必须唯一。**始终显式提供唯一的 name**
 - `output`: IItemStack，输出物品
 - `inputBox`: IIngredient[][]，二维数组，每行最多 3 个，最多 3 行
 - `recipeFunction`: IRecipeFunction，可选，动态决定输出的函数（详见[配方函数](functions.md)）

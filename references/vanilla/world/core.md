@@ -72,7 +72,6 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `.isAirBlock(IBlockPos)` | bool | 是否空气方块 |
 | `.isBlockLoaded(IBlockPos)` | bool | 方块是否已加载 |
 | `.isBlockModifiable(IPlayer, IBlockPos)` | bool | 玩家是否可修改方块 |
-| `.canSeeSky(IBlockPos)` | bool | 是否能看到天空 |
 | `.canBlockSeeSky(IBlockPos)` | bool | 方块是否能看到天空 |
 | `.isBlockNormalCube(IBlockPos)` | bool | 是否普通方块 |
 | `.isBlockFullCube(IBlockPos)` | bool | 是否完整方块 |
@@ -93,11 +92,9 @@ IWorld、IBlockPos、IFacing 核心 API。
 | `.addBlockEvent(IBlockPos, Block, int, int)` | void | 添加方块事件 |
 | `.getBiome(IBlockPos)` | IBiome | 获取生物群系 |
 | `.getBiome(IPosition3f)` | IBiome | 获取生物群系 |
-| `.getTopSolidBlock(IBlockPos)` | IBlockPos | 获取最高实心方块 |
 | `.getActualHeight()` | int | 获取实际高度 |
 | `.getChunks()` | List | 获取所有区块 |
 | `.getPlayers(Class, Predicate)` | List | 获取玩家列表 |
-| `.getGameRules()` | IGameRules | 获取游戏规则 |
 | `.setRainStrength(float)` | void | 设置雨强度 |
 | `.setThunderStrength(float)` | void | 设置雷强度 |
 | `.setTime(long)` | void | 设置时间 |
@@ -198,7 +195,7 @@ IFacing 代表一个方向（北、南、东、西、上、下）。
 | `IFacing.down()` | IFacing | 获取下方向 |
 | `IFacing.up()` | IFacing | 获取上方向 |
 | `IFacing.fromString(string)` | IFacing | 从字符串获取方向（如 "NORTH"） |
-| `IFacing.getDirectionFromEntityLiving(IBlockPos, IEntityLivingBase)` | IFacing | 根据实体位置获取方向（常用于确定方块放置朝向，可返回 UP/DOWN） |
+| `IFacing.getDirectionFromEntityLiving(IBlockPos, IEntityLivingBase)` | IFacing | 根据实体位置获取方向（常用于确定方块放置朝向，可返回 UP/DOWN）。**返回值总是与实体朝向相反** |
 
 #### @ZenGetter
 

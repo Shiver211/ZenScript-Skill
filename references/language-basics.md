@@ -21,7 +21,9 @@
 
 ### 基本类型（无需 import）
 
-`int`, `bool`, `long`, `float`, `double`, `void`, `string`
+`any`, `bool`, `byte`, `short`, `int`, `long`, `float`, `double`, `string`, `void`
+
+> `any` 即 IAny —— 只应在确实无法确定类型时使用。
 
 ### 对象类型（需 import）
 
@@ -56,16 +58,17 @@ var c = 10;             // 自动推断为 int
 ### 作用域
 
 ```zenscript
-global a as int = 450;                        // 全局作用域
-static b as int = 100;                        // 全局作用域
+global a as int = 450;                        // 全局作用域，任何脚本按名字直接访问
+static b as int = 100;                        // 脚本绑定作用域，必须走 scripts. 前缀访问
 val item as IItemStack = <minecraft:apple>;   // 脚本作用域
 ```
+跨脚本引用 `global` 时需用 `#priority` 保证声明脚本先执行。
 
 ### 字符串
 
 ```zenscript
 "Hello".length              // 长度
-"Hello"[1]                  // 索引字符
+"Hello"[1]                  // 返回该位置字符，类型是 string
 "Hello" in "Hell"           // 包含检查
 "Hel" ~ "lo"                // 连接
 ```
@@ -191,6 +194,10 @@ function name(a as int, b as int = 2) as 返回类型 {
     return a + b;
 }
 ```
+
+默认参数的两条硬性限制：
+1. 默认值**不能用变量**，只能是括号处理器或函数，例如 `b as int = <minecraft:apple>.maxStackSize`
+2. 某参数一旦有默认值，**它之后的所有参数都必须有默认值**
 
 ### 全局函数变量
 

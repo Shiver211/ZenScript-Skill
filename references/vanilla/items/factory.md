@@ -48,7 +48,7 @@ CoT 脚本第一行必须为 `#loader contenttweaker`。
 | `itemGetContainerItem` | IItemGetContainerItem | null | 容器物品函数 |
 | `itemColorSupplier` | IItemColorSupplier | null | 物品颜色函数 |
 | `localizedNameSupplier` | ILocalizedNameSupplier | null | 显示名函数 |
-| `textureLocation` | IResourceLocationSupplier | null | 纹理位置函数 |
+| `textureLocation` | CTResourceLocation | null | 物品的纹理资源位置；若需函数式写法见下方 IResourceLocationSupplier） |
 
 | 方法 | 返回 | 说明 |
 |------|------|------|

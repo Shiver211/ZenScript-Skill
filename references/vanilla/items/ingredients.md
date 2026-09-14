@@ -28,7 +28,7 @@ IItemStack、IOreDictEntry、ILiquidStack 都实现了此接口。
 | `.liquids` | List\<ILiquidStack\> | 匹配的流体列表 |
 | `.commandString` | string | 命令字符串 |
 | `.transform(IItemStack function(IItemStack, IPlayer))` | IIngredient | 自定义转换 |
-| `.transformNew(IItemStack function(IItemStack))` | IIngredient | 自定义转换（新物品，只接收 item 参数） |
+| `.transformNew(IItemStack function(IItemStack))` | IIngredient | 自定义转换（只接收 item 参数）。**语义与 `.transform` 相反**：返回值不是替换槽位的内容，而是该槽"产出"的物品——返回 null 表示消耗 1 个；返回物品则优先放回槽位，放不下就像桶一样交还玩家 |
 | `.only(IItemStack function(IItemStack))` | IIngredient | 自定义条件（只接收 item 参数） |
 | `.matches(IItemStack)` | bool | 是否匹配 |
 | `.matchesExact(IItemStack)` | bool | 是否精确匹配 |
@@ -68,8 +68,8 @@ val wItem2 = <minecraft:diamond>.weight(0.2); // 同上（0.2 = 20%）
 
 附加到物品上，用于配方的特殊需求。
 
-> **注意：** 使用耐久相关条件时，先加 meta 通配符禁用默认精确耐久匹配：
-> `<minecraft:iron_pickaxe:*>.onlyDamaged()`
+> **注意：** 四个耐久条件（`.onlyDamaged()` / `.onlyDamageAtLeast()` / `.onlyDamageAtMost()` / `.onlyDamageBetween()`）**必须与 `.anyDamage()` 连用**，否则不生效。另外建议加 meta 通配符禁用默认的精确耐久匹配：
+> `<minecraft:iron_pickaxe:*>.anyDamage().onlyDamaged()`
 
 | 条件 | 说明 |
 |------|------|
@@ -78,15 +78,15 @@ val wItem2 = <minecraft:diamond>.weight(0.2); // 同上（0.2 = 20%）
 | `.onlyDamageAtLeast(int)` | 耐久不小于指定值 |
 | `.onlyDamageAtMost(int)` | 耐久不大于指定值 |
 | `.onlyDamageBetween(int, int)` | 耐久在两者之间 |
-| `.withTag(IData)` | 需要带有指定 NBT |
-| `.onlyWithTag(IData)` | 需要**只**带有指定 NBT |
+| `.withTag(IData)` | 需要带有指定 NBT（**允许多余的 NBT**） |
+| `.onlyWithTag(IData)` | **匹配行为与 `.withTag` 完全相同**（同样允许多余 NBT）。差别仅在 JEI 显示：`.withTag` 正常显示，`.onlyWithTag` 只显示无 NBT 的物品 |
 | `.withDamage(int)` | 输出带有指定耐久 |
 | `.only(function)` | 自定义条件函数 |
 | `.onlyStack(int)` | 物品堆叠数量至少为指定值 |
 
 ```zenscript
-// 有损耗的铁镐才能参与合成
-<minecraft:iron_pickaxe:*>.onlyDamaged().withTag({display: {Lore: ["损坏的铁镐"]}});
+// 有损耗的铁镐才能参与合成（耐久条件必须配 anyDamage()）
+<minecraft:iron_pickaxe:*>.anyDamage().onlyDamaged().withTag({display: {Lore: ["损坏的铁镐"]}});
 
 // 自定义条件：只在下界生效
 recipes.addShapeless("nether_recipe", <minecraft:netherrack>,
@@ -114,7 +114,7 @@ null);
 | `.noReturn()` | 强制消耗（即使有容器物品） |
 | `.transformConsume(int)` | 消耗指定个数 |
 | `.transform(function(IItemStack, IPlayer))` | 自定义转换函数（返回物品替换槽位内容，null 清空槽位，可能在 1.13 移除） |
-| `.transformNew(function(IItemStack))` | 新版自定义转换函数（不需要 player 参数时优先使用） |
+| `.transformNew(function(IItemStack))` | 新版自定义转换函数（不需要 player 参数时优先使用）。**返回值不是替换槽位的内容**，而是该槽的产出：返回 null = 消耗 1 个；返回物品优先回槽位，放不下则像桶一样交还玩家 |
 
 ```zenscript
 // 石斧 + 木板 = 3 木棍，石斧掉 1 耐久

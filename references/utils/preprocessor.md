@@ -18,7 +18,7 @@
 | `#modloaded <modID>` | mod 加载时才执行（支持 `!` 取反） |
 | `#loader <loaderName>` | 指定加载器（默认 `crafttweaker`） |
 | `#sideonly <side>` | 只在 client 或 server 执行 |
-| `#debug` | 输出编译的 class 文件 |
+| `#debug` | 开启全局 debug 模式，输出**解析后的脚本文件**到日志 |
 | `#ignoreBracketErrors` | 忽略尖括号错误 |
 | `#norun` | 不执行脚本（仍检查语法） |
 | `#nowarn` | 警告只写日志（不影响错误） |

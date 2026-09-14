@@ -102,11 +102,7 @@ IBlock、IBlockState、IBlockDefinition 核心 API。
 | `isBlockNormalCube` | bool | 是否普通方块 |
 | `doesSideBlockRendering` | bool | 是否渲染面 |
 | `renderType` | int | 渲染类型 |
-| `weakPower` | int | 弱红石信号 |
-| `strongPower` | int | 强红石信号 |
 | `canProvidePower` | bool | 是否可提供红石信号 |
-| `getLightValue` | int | 亮度 |
-| `getComparatorInputOverride` | int | 比较器输入 |
 
 #### 静态方法
 

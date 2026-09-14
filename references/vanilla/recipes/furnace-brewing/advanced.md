@@ -55,12 +55,12 @@ val bannedItems as IItemStack[] = [
 // 执行修改
 for item, ingredients in shapedRecipes {
     recipes.remove(item);
-    recipes.addShaped(item, ingredients);
+    recipes.addShaped(item.displayName ~ "_resized", item, ingredients);
 }
 
 for item, ingredients in shapelessRecipes {
     recipes.remove(item);
-    recipes.addShapeless(item, ingredients);
+    recipes.addShapeless(item.displayName ~ "_reshaped", item, ingredients);
 }
 
 for item in bannedItems {
@@ -89,7 +89,7 @@ var planks as IItemStack[] = [
 for i, log in logs {
     var plank = planks[i];
     recipes.removeShapeless(plank, [log]);
-    recipes.addShapeless(plank * 2, [log]);
+    recipes.addShapeless("plank_double_" ~ i, plank * 2, [log]);
 }
 ```
 

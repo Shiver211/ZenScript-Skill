@@ -26,7 +26,7 @@
 | `dimension` | int | 维度 ID |
 | `item` | IItemStack | 手持物品（锄头） |
 | `player` | IPlayer | 使用锄头的玩家 |
-| `result` | string | 事件结果（可设置），值为 `default`、`deny` 或 `allow` |
+| `result` | string | 事件结果（**只读**），值为 `default`、`deny` 或 `allow`。修改结果请用 `event.deny()` / `event.allow()` / `event.default()`，不能直接赋值 |
 
 方法：
 - `event.deny()` 设置结果为 `deny`
@@ -69,7 +69,7 @@
 | `dimension` | int | 维度 ID |
 | `item` | IItemStack | 手持物品（骨粉） |
 | `player` | IPlayer | 使用骨粉的玩家 |
-| `result` | string | 事件结果（可设置），值为 `default`、`deny` 或 `allow` |
+| `result` | string | 事件结果（**只读**），值为 `default`、`deny` 或 `allow`。修改结果请用 `event.deny()` / `event.allow()` / `event.default()`，不能直接赋值 |
 
 方法：
 - `event.deny()` 设置结果为 `deny`

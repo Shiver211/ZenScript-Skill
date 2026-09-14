@@ -158,7 +158,7 @@
 | `.addDrop(WeightedItemStack, @Optional int, @Optional int)` | void | 添加权重掉落物 |
 | `.addDrop(IItemStack, @Optional int, @Optional int, @Optional float)` | void | 添加掉落物（带数量范围和几率） |
 | `.addPlayerOnlyDrop(IItemStack)` | void | 添加仅玩家击杀掉落 |
-| `.addPlayerOnlyDrop(IItemStack, int, int)` | void | 添加仅玩家击杀掉落（数量范围） |
+| `.addPlayerOnlyDrop(IItemStack, @Optional int, @Optional int, @Optional float)` | void | 添加仅玩家击杀掉落（数量范围 + 几率），与 `addDrop` 参数一致 |
 | `.addPlayerOnlyDrop(WeightedItemStack, @Optional int, @Optional int)` | void | 添加权重仅玩家击杀掉落 |
 | `.addDropFunction(IEntityDropFunction)` | void | 添加掉落函数，实体被击杀时调用 |
 | `.removeDrop(IItemStack)` | void | 移除掉落物 |

@@ -159,7 +159,7 @@ events.onPlayerDeathDrops(function(event as PlayerDeathDropsEvent) {
 | `rightItem` | IItemStack | 右侧输入物品 |
 | `outputItem` | IItemStack | 输出物品（可设置，设置后跳过原版行为） |
 | `itemName` | string | 玩家设置的物品名称 |
-| `xpCost` | int | 经验消耗（可设置） |
+| `xpCost` | int | 经验消耗（可设置，**仅在 `outputItem` 不为 null 时修改才生效**） |
 | `materialCost` | int | 右侧消耗物品数量（可设置，0 表示消耗整个堆叠） |
 
 ### PlayerSetSpawnEvent（玩家设置重生点事件）
@@ -182,7 +182,7 @@ events.onPlayerDeathDrops(function(event as PlayerDeathDropsEvent) {
 
 > `import crafttweaker.event.PlayerVisibilityEvent;`
 
-确定玩家可见性时触发，用于计算生物发现玩家的距离。无法直接设置 `modifier`，需要通过 `modifyVisibility` 方法修改。
+确定玩家可见性时触发，用于计算生物发现玩家的距离。无法直接设置 `modifier`，需要通过 `modifyVisibility` 方法修改。**可见性只能调低或还原，不能提高到超过原版最大索敌距离**（即标准目标距离）。
 
 实现接口：IPlayerEvent
 

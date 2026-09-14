@@ -75,6 +75,10 @@ events.onPlayerCrafted(function(event as crafttweaker.event.PlayerCraftedEvent){
 
 方法：`event.cancel()` 取消事件。
 
+> **两条重要行为**：
+> 1. 在 CrT 收到之前就已被其它来源取消的事件，**不会再传给 handler**；
+> 2. 注册了多个 handler 时，其中一个 `cancel()` **不影响其它 CrT handler 照样收到该事件** —— `cancel()` 无法用来拦截后续 handler。
+
 ### IEventHasResult
 
 | 属性 | 类型 | 说明 |

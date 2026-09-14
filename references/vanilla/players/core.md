@@ -82,14 +82,14 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `.sendRichTextStatusMessage(ITextComponent, @Optional bool)` | void | 发送富文本状态消息 |
 | `.sendToast(string, string)` | void | 发送通知 |
 | `.executeCommand(string)` | void | 执行命令 |
-| `.attackEntityFrom(IDamageSource, float)` | void | 造成伤害 |
+| `.attackEntityFrom(IDamageSource, float)` | bool | 造成伤害，返回是否成功 |
 | `.heal(float)` | void | 治疗 |
 | `.setFoodLevel(int)` | void | 设置饥饿值 |
 | `.setSaturation(float)` | void | 设置饱和度 |
 | `.addExperience(int)` | void | 添加经验 |
 | `.removeXP(int)` | void | 移除经验等级 |
 | `.setXPLevel(int)` | void | 设置经验等级 |
-| `.setItemToSlot(EntityEquipmentSlot, IItemStack)` | void | 设置装备 |
+| `.setItemToSlot(IEntityEquipmentSlot, IItemStack)` | void | 设置装备 |
 | `.hasGameRule(string)` | bool | 是否有游戏规则 |
 | `.getGameRule(string)` | string | 获取游戏规则 |
 | `.getHotbarStack(int)` | IItemStack | 获取快捷栏指定位置的物品 |

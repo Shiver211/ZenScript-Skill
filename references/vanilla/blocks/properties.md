@@ -32,7 +32,7 @@ IBlockPattern 是一个将多个方块组合为一个对象的接口，类似于
 
 > `import crafttweaker.block.IBlockProperties;`
 
-IBlockProperties 是 IBlockState 的父接口，所有 IBlockState 的方法也适用于 IBlockProperties。
+IBlockProperties 是 IBlockState 的父接口——所有 **IBlockProperties** 的方法都适用于 IBlockState，**反之不成立**（IBlockState 特有的 `getPropertyNames()` / `withProperty()` 等不能在 IBlockProperties 上调用）。
 
 #### @ZenGetter
 
@@ -79,6 +79,12 @@ IBlockStateMatcher 用于匹配 IBlockState 对象的一组要求。每个 IBloc
 |------|------|------|
 | `IBlockStateMatcher.create(IBlockState...)` | IBlockStateMatcher | 创建匹配器。零个参数则永不匹配；一个参数则匹配该方块的任意属性值；多个参数等同于 OR 合并 |
 
+#### @ZenGetter
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `commandString` | string | 获取命令字符串表示（可用于还原配方输入；注意返回串里的参数**没有引号**，直接复制需自行补 `""`） |
+
 #### 方法
 
 | 方法 | 返回 | 说明 |
@@ -89,7 +95,6 @@ IBlockStateMatcher 用于匹配 IBlockState 对象的一组要求。每个 IBloc
 | `.getMatchedProperties()` | Map\<string, List\<string\>\> | 获取所有匹配属性（仅非复合匹配器可用） |
 | `.getMatchingBlockStates()` | Collection\<IBlockState\> | 获取所有匹配的方块状态集合 |
 | `.isCompound()` | bool | 检查是否为复合匹配器 |
-| `commandString` | string | 获取命令字符串表示 |
 
 #### 操作
 

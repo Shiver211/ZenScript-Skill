@@ -47,6 +47,8 @@ for entry in oreDict { print(entry.name); }
 
 通过 `<ore:ingotIron>` 获取。IOreDictEntry 实现了 IIngredient 接口。
 
+> 若尖括号里带 `*`（如 `<ore:ingotIron:*>`），返回的是 **`List<IOreDictEntry>`** 而不是单个条目。
+
 #### @ZenGetter
 
 | 属性 | 类型 | 说明 |

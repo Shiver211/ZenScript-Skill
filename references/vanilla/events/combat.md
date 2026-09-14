@@ -53,7 +53,7 @@
 
 玩家攻击时暴击判定触发。
 
-实现接口：IPlayerEvent
+实现接口：IPlayerEvent, IEventHasResult
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
@@ -62,6 +62,7 @@
 | `damageModifier` | float | 伤害倍率（可设置） |
 | `isVanillaCrit` | boolean | 是否原版暴击 |
 | `player` | IPlayer | 攻击的玩家 |
+| `result` | string | 当前判定结果，值为 `default` / `deny` / `allow` |
 
 方法：
 - `event.deny()` 阻止暴击
