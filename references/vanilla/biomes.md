@@ -44,15 +44,6 @@
 |------|------|------|
 | `.canRain()` | boolean | 是否可以下雨 |
 | `.isSnowyBiome()` | boolean | 是否雪地 |
-| `.setTemperature(float)` | void | 设置温度 |
-| `.setRainfall(float)` | void | 设置降雨量 |
-| `.setWaterColorMultiplier(int)` | void | 设置水颜色倍增器 |
-| `.setEnableRain(boolean)` | void | 设置是否启用雨 |
-| `.setEnableSnow(boolean)` | void | 设置是否启用雪 |
-| `.setMinHeight(float)` | void | 设置最小高度 |
-| `.setMaxHeight(float)` | void | 设置最大高度 |
-| `.setBaseHeight(float)` | void | 设置基础高度 |
-| `.setHeightVariation(float)` | void | 设置高度变化 |
 
 ### IBiomeType（生物群系类型）
 
@@ -86,12 +77,13 @@ for biome in game.biomes {
 }
 ```
 
-### 生物群系属性修改
+### 读取生物群系信息
 
 ```zenscript
-// 修改温度
-biome.setTemperature(0.8f);
+// IBiome 是只读封装，只能读取属性，没有 setter
+print(biome.name);
+print(biome.temperature);
+print(biome.rainfall);
 
-// 修改降雨量
-biome.setRainfall(0.4f);
+// 需要自定义生物群系时，请使用 ContentTweaker 的 createBiome
 ```

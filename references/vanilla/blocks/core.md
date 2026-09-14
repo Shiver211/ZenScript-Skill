@@ -169,17 +169,17 @@ IBlockDefinition 提供方块的额外信息，可通过 `block.definition` 获�
 | `displayName` | string | 显示名称（只读） |
 | `commandString` | string | 命令字符串（只读） |
 | `unlocalizedName` | string | 未本地化名称（只读） |
-| `creativeTab` | ICreativeTab | 创造模式标签页（只读） |
+| `creativeTab` | ICreativeTab | 创造模式标签页（可读写） |
 | `defaultState` | IBlockState | 默认方块状态（只读） |
-| `harvestLevel` | int | 挖掘等级（可读写） |
-| `harvestTool` | string | 挖掘工具（可读写） |
+| `harvestLevel` | int | 挖掘等级（只读）。设置请用 `.setHarvestLevel(string, int, @Optional IBlockState)` |
+| `harvestTool` | string | 挖掘工具（只读） |
 | `hardness` | int | 硬度（可读写） |
 | `resistance` | int | 爆炸抗性（可读写） |
 | `lightLevel` | int | 亮度（可读写） |
 | `lightOpacity` | int | 光照不透明度（可读写） |
 | `tickRandomly` | bool | 是否随机 tick（可读写） |
 | `canSpawnInBlock` | bool | 实体是否可在此方块内生成（只读） |
-| `defaultSlipperiness` | float | 默认滑度（可读写） |
+| `defaultSlipperiness` | float | 默认滑度（**只写**，读不到） |
 
 #### 方法
 
@@ -201,7 +201,6 @@ IBlockDefinition 提供方块的额外信息，可通过 `block.definition` 获�
 | `.getStateFromMeta(int)` | IBlockState | 从 Meta 获取方块状态 |
 | `.isToolEffective(string, IBlockState)` | bool | 检查工具是否对指定状态有效 |
 | `.setUnbreakable()` | void | 设置不可破坏（等同于 `hardness = -1`） |
-| `.setCreativeTab(string)` | void | 设置创造模式标签页 |
 | `.setTickRandomly(bool)` | void | 设置随机 tick |
 | `.setHardness(int)` | void | 设置硬度 |
 | `.setResistance(int)` | void | 设置爆炸抗性 |

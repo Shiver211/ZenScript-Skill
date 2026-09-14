@@ -59,8 +59,9 @@ ContentTweaker (CoT) 允许用 ZenScript 为游戏添加自定义物品、方块
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.registerParts(string[] parts)` | void | 注册多个部件 |
-| `.registerPart(string part)` | void | 注册单个部件 |
+| `.registerParts(string[] parts)` | MaterialPart[] | 注册多个部件，返回 MaterialPart 列表 |
+| `.registerParts(IPart[] parts)` | MaterialPart[] | 注册多个部件（IPart 数组重载） |
+| `.registerPart(string part)` | MaterialPart | 注册单个部件，返回 MaterialPart（可链式调用 `.getData()`） |
 
 ### PartBuilder（部件构建器）
 
@@ -92,12 +93,15 @@ ContentTweaker (CoT) 允许用 ZenScript 为游戏添加自定义物品、方块
 
 > `import mods.contenttweaker.MaterialPartData;`
 
+由 **MaterialPart** 的 `.getData()` 获取，例如 `metal.registerPart("ore").getData()`。
+
 #### 方法
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.getData()` | 未说明 | 获取数据对象 |
 | `.addDataValue(string name, string value)` | void | 添加数据字段 |
+| `.getIntValue(string name, int defaultValue)` | int | 读取整数字段，字段不存在时返回 defaultValue |
+| `.getStringValue(string name, string defaultValue)` | string | 读取字符串字段，字段不存在时返回 defaultValue |
 
 **物品字段**: burn (燃烧时间)
 

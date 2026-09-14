@@ -63,8 +63,8 @@ val buildingBlocks = game.getCreativeTab("buildingBlocks");
 ### 物品设置创造模式标签页
 
 ```zenscript
-// 设置物品的创造模式标签页
-<minecraft:stone>.definition.setCreativeTab("buildingBlocks");
+// 设置物品的创造模式标签页（creativeTab 属性为可读写）
+<minecraft:stone>.definition.creativeTab = <creativetab:buildingBlocks>;
 
 // 获取物品的创造模式标签页
 val tab = <minecraft:stone>.definition.creativeTab;

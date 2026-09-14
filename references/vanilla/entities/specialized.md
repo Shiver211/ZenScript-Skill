@@ -22,7 +22,7 @@
 |------|------|------|------|
 | `shooter` | 是 | IEntity | 射出者 |
 | `damage` | 是 | double | 伤害值 |
-| `knockbackStrength` | 否 | int | 击退强度 |
+| `knockbackStrength` | 是 | int | 击退强度 |
 | `isCritical` | 是 | boolean | 是否暴击 |
 | `pickupStatus` | 是 | String | 拾取状态 |
 | `shake` | 否 | int | 抖动值 |

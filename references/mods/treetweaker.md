@@ -68,6 +68,8 @@ TreeTweaker 允许通过脚本自定义树木类型并添加到世界生成中�
 | `SPRUCE` | 云杉 |
 | `LARGE_SPRUCE` | 大型云杉 |
 | `ACACIA` | 金合欢 |
+| `BIRCH` | 白桦 |
+| `DARK_OAK` | 深色橡木 |
 | `RED_MUSHROOM` | 红蘑菇 |
 | `BROWN_MUSHROOM` | 棕蘑菇 |
 | `BRAIDED` | 螺旋树 |

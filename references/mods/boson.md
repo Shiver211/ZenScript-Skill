@@ -2,7 +2,7 @@
 
 > Mod ID: `boson`
 > 前置条件: 无
-> 导入: `import mods.boson.*;`
+> 导入: 各类**不在统一包下**——序列/数学/反射位于 `zenscriptx.*`，标签与命名空间字符串位于 `net.thesilkminer.mc.boson.zen.*`，见各小节
 
 Boson 是一个库模组，提供标签（Tags）、序列（Sequences）、反射（Reflection）、数学函数等功能。
 
@@ -12,9 +12,9 @@ Boson 是一个库模组，提供标签（Tags）、序列（Sequences）、反�
 
 ### Tags（标签系统）
 
-> `import mods.boson.Tag;`
-> `import mods.boson.TagIngredient;`
-> `import mods.boson.TagType;`
+> `import net.thesilkminer.mc.boson.zen.tag.Tag;`
+> `import net.thesilkminer.mc.boson.zen.tag.TagIngredient;`
+> `import net.thesilkminer.mc.boson.zen.tag.TagType;`
 
 标签是 Boson 提供的强大功能，类似于矿辞但更灵活。
 
@@ -64,7 +64,7 @@ Boson 是一个库模组，提供标签（Tags）、序列（Sequences）、反�
 
 ### TagIngredient（标签配料）
 
-> `import mods.boson.TagIngredient;`
+> `import net.thesilkminer.mc.boson.zen.tag.TagIngredient;`
 
 TagIngredient 是 IIngredient 的实现，允许在配方中使用标签。
 
@@ -76,7 +76,7 @@ TagIngredient 是 IIngredient 的实现，允许在配方中使用标签。
 
 ### TagType（标签类型）
 
-> `import mods.boson.TagType;`
+> `import net.thesilkminer.mc.boson.zen.tag.TagType;`
 
 标签类型定义了标签中可以存储的元素类型。
 
@@ -99,7 +99,7 @@ TagIngredient 是 IIngredient 的实现，允许在配方中使用标签。
 
 ### NameSpacedString（命名空间字符串）
 
-> `import mods.boson.NameSpacedString;`
+> `import net.thesilkminer.mc.boson.zen.naming.NameSpacedString;`
 
 Boson 使用 NameSpacedString 来表示带命名空间的字符串。
 
@@ -139,7 +139,7 @@ tag.add("minecraft:iron_block" as NameSpacedString);
 
 ## Sequences（序列系统）
 
-> `import mods.boson.Sequence;`
+> `import zenscriptx.sequence.Sequence;`
 
 序列是惰性求值的列表操作工具。
 
@@ -181,7 +181,7 @@ tag.add("minecraft:iron_block" as NameSpacedString);
 
 ## Math（数学函数）
 
-> `import mods.boson.Math;`
+> `import zenscriptx.math.Math;`
 
 ### 数学常数
 
@@ -237,8 +237,8 @@ tag.add("minecraft:iron_block" as NameSpacedString);
 
 ## Reflection（反射系统）
 
-> `import mods.boson.Class;`
-> `import mods.boson.NativeClass;`
+> `import zenscriptx.reflect.Class;`
+> `import zenscriptx.reflect.NativeClass;`
 
 ### Class
 

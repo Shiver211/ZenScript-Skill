@@ -44,7 +44,7 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `isBlocking` | bool | 是否格挡 |
 | `isBurning` | bool | 是否着火 |
 | `isInWater` | bool | 是否在水中 |
-| `isOnGround` | bool | 是否在地面上 |
+| `onGround` | bool | 是否在地面上 |
 | `isRiding` | bool | 是否骑乘 |
 | `isInvisible` | bool | 是否隐身 |
 | `isInvulnerable` | bool | 是否无敌 |
@@ -89,7 +89,6 @@ IPlayer 继承 IEntityLivingBase，IEntityLivingBase 继承 IEntity。
 | `.addExperience(int)` | void | 添加经验 |
 | `.removeXP(int)` | void | 移除经验等级 |
 | `.setXPLevel(int)` | void | 设置经验等级 |
-| `.getHeldItem(EnumHand)` | IItemStack | 获取手持物品 |
 | `.setItemToSlot(EntityEquipmentSlot, IItemStack)` | void | 设置装备 |
 | `.hasGameRule(string)` | bool | 是否有游戏规则 |
 | `.getGameRule(string)` | string | 获取游戏规则 |

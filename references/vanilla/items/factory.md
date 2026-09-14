@@ -42,10 +42,10 @@ CoT 脚本第一行必须为 `#loader contenttweaker`。
 | `onItemFoodEaten` | IItemFoodEaten | null | 吃下回调（仅 ItemFood） |
 | `onItemUpdate` | IItemUpdate | null | 物品更新回调 |
 | `onItemUseFinish` | IItemUseFinish | null | 使用完成回调 |
-| `onDestroyedBlock` | IItemDestroyedBlock | null | 破坏方块回调 |
-| `destroySpeed` | IItemDestroySpeed | null | 破坏速度函数 |
+| `itemDestroyedBlock` | IItemDestroyedBlock | null | 破坏方块回调 |
+| `itemDestroySpeed` | IItemDestroySpeed | null | 破坏速度函数 |
 | `itemInteractionForEntity` | IItemInteractionForEntity | null | 对实体交互回调 |
-| `containerItem` | IItemGetContainerItem | null | 容器物品函数 |
+| `itemGetContainerItem` | IItemGetContainerItem | null | 容器物品函数 |
 | `itemColorSupplier` | IItemColorSupplier | null | 物品颜色函数 |
 | `localizedNameSupplier` | ILocalizedNameSupplier | null | 显示名函数 |
 | `textureLocation` | IResourceLocationSupplier | null | 纹理位置函数 |

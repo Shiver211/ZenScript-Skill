@@ -48,7 +48,7 @@
 
 > `import mods.thaumcraft.LootBag;`
 
-战利品类型: 0=普通, 1=稀有, 2=史诗
+战利品类型: 0=Common（普通）, 1=Uncommon（不常见）, 2=Rare（稀有）
 
 | 方法 | 返回 | 说明 |
 |------|------|------|

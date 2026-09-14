@@ -35,7 +35,7 @@
 | `.add(IBlockState output, IBlockState input, @Optional IBlockState sneakOutput)` | void | 添加世界转化配方（方块状态版本） |
 | `.remove(IItemStack output, IItemStack input, @Optional IItemStack sneakOutput)` | void | 移除匹配的世界转化配方 |
 | `.remove(IBlockState output, IBlockState input, @Optional IBlockState sneakOutput)` | void | 移除匹配的世界转化配方（方块状态版本） |
-| `.removeAll()` | void | 移除所有世界转化配方（包括用户添加的） |
+| `.removeAllWorldTransmutation()` | void | 移除所有世界转化配方（包括用户添加的）。|
 
 如果 IItemStack 没有对应的方块，使用空气代替。
 

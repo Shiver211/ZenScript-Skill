@@ -3,6 +3,7 @@
 .github
 .agents
 .trae
+.audit-reports
 docs
 scrape_docs.py
 CLAUDE.md

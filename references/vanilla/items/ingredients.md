@@ -20,8 +20,8 @@ IItemStack、IOreDictEntry、ILiquidStack 都实现了此接口。
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.mark(string)` | IIngredient | 标记（用于配方函数） |
-| `.marked(string)` | IIngredient | 标记（同上） |
+| `.mark` | string | 读取已设置的标记（无参；用 `.marked()` 设置） |
+| `.marked(string)` | IIngredient | 设置标记（供配方函数使用） |
 | `.amount` | int | 获取数量 |
 | `.items` | List\<IItemStack\> | 匹配的物品列表 |
 | `.itemArray` | IItemStack[] | 匹配的物品数组 |

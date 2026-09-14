@@ -42,16 +42,17 @@ EnderIO 模组的 CraftTweaker 集成，支持修改合金冶炼炉、SAG 磨粉
 
 > `import mods.enderio.Vat;`
 
-巫术酿造釜使用乘数系统计算输出。输入→输出流体比例恒定，等于 `inMult`。
+通过各槽位物品的乘数计算输入与输出的流体量。
 
 - 每次合成消耗输入流体：`slot1Mult × slot2Mult × 1000 mb`
-- 输出流体量：`inMult × slot1Mult × slot2Mult × 1000 mb`
+
+> ⚠️ 上述换算公式、以及 `slot1Mults` / `slot2Mults` 的具体语义，在官方 wiki 中均未说明（wiki 只写 "The multipliers for the items in slot 1"），需实测确认。
 
 #### 方法
 
 | 方法 | 返回 | 说明 |
 |------|------|------|
-| `.addRecipe(ILiquidStack output, float inMult, ILiquidStack input, IIngredient[] slot1Solids, float[] slot1Mults, IIngredient[] slot2Solids, float[] slot2Mults, @Optional int energyCost)` | void | 添加配方。output/input 的数量参数被忽略；slot1Mults 长度须与 slot1Solids 相同；slot2Mults 长度须与 slot2Solids 相同；energyCost 默认 5000 FE |
+| `.addRecipe(ILiquidStack output, ILiquidStack input, IIngredient[] slot1Solids, float[] slot1Mults, IIngredient[] slot2Solids, float[] slot2Mults, @Optional int energyCost)` | void | 添加配方。slot1Mults 长度须与 slot1Solids 相同；slot2Mults 长度须与 slot2Solids 相同；energyCost 默认 5000 FE |
 | `.removeRecipe(ILiquidStack output)` | void | 按输出流体移除配方 |
 
 ---
