@@ -42,7 +42,7 @@
 | vanilla/events/player/other.md | 其他玩家事件 | Tick, 死亡, 容器, 铁砧, 重生点, 可见性, 使用物品 |
 | vanilla/events/combat.md | 战斗事件 | 箭矢, 暴击, 投射物, 爆炸 |
 | vanilla/events/world.md | 世界事件 | 世界, Tick, 实体移除, 物品销毁, 矿车, 睡觉 |
-| vanilla/events/system.md | 系统事件 | 命令, 附魔, 酿造, 物品, 通用管理器, EventPriority |
+| vanilla/events/system.md | 系统事件 | 命令, 附魔, 酿造, 物品事件, EventPriority |
 | vanilla/events/client.md | 客户端事件 | 聊天, 渲染覆盖层, EventTweaker |
 | vanilla/events/entity/lifecycle.md | 实体生命周期 | 加入世界, 生成, 死亡, 死亡掉落, 跨维度, 末影传送 |
 | vanilla/events/entity/combat.md | 实体战斗事件 | 被攻击, 受伤, 回血, 跳跃, 击退 |
@@ -57,7 +57,7 @@
 | vanilla/dispenser.md | 发射器 | 发射器配方 |
 | vanilla/creative-tabs.md | 创造标签页 | ICreativeTab, CreativeTab, 自定义创造标签 |
 | vanilla/villager.md | 村民 | 村民交易 |
-| vanilla/village.md | 村庄 | 村庄声望, IVillage, 村庄半径, 村庄门 |
+| vanilla/village.md | 村庄 | 村庄声望, IVillage, 村庄半径, 有效门 |
 | vanilla/gamerules.md | 游戏规则 | 游戏规则操作 |
 | vanilla/game.md | 游戏 | IGame, IClient, IServer, ITeam, ILoadedMods |
 
@@ -76,10 +76,12 @@
 | utils/network-handler.md | 服务端/客户端通信 | NetWorkHandler, IByteBuf, 发包, 收包, CD 同步 |
 | utils/arrays.md | 数组 | 数组操作, 切片, 遍历 |
 | utils/maps.md | Map | 关联数组, 键值遍历 |
-| utils/text.md | 文本 | 颜色, 样式, tooltip, 聊天文本 |
+| utils/text.md | 文本格式化 | 颜色, 样式, format, addTooltip |
 | utils/static-string.md | 字符串 | 字符串方法, ZenUtils |
+| utils/string-list.md | 字符串列表 | StringList, 列表操作, ZenUtils |
+| utils/mutable-string.md | 可变字符串 | MutableString, 字符串拼接, StringBuilder |
 | utils/template-strings.md | 模板字符串 | 反引号, 插值 |
-| utils/regex-matcher.md | 正则 | 正则匹配, CTUtils |
+| utils/regex-matcher.md | 正则 | 正则匹配, RegexMatcher, ctutils |
 | utils/math.md | 数学库 | 随机数, 取整, 三角函数 |
 | utils/date.md | 日期时间 | 日期, 时间, 日历 |
 | utils/uuid.md | UUID | UUID 生成, 解析 |
@@ -92,6 +94,8 @@
 | utils/catenation.md | 链式执行 | 延迟执行, 链式任务 |
 | utils/i18n.md | 本地化 | 翻译键, 多语言 |
 | utils/GlStateManager.md | 渲染状态 | 客户端渲染, 矩阵, 颜色 |
+| utils/ichunkpos.md | 区块坐标 | IChunkPos, 区块位置, Roids-Tweaker |
 | utils/mixin.md | Mixin | ZenScript Mixin |
 | utils/color.md | 颜色对象 | Color, ContentTweaker, 颜色函数 |
+| utils/recipe-pattern.md | 配方模式 | RecipePattern, JSON 式配方, 字符映射 |
 | utils/expand.md | 扩展方法 | $expand, this, 自定义成员方法, 扩展类 |
